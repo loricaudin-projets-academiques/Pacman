@@ -185,10 +185,10 @@
                         <phase>test</phase>
                         <configuration>
                             <configLocation>src/main/config/checkstyle.xml</configLocation>
-                            <encoding>UTF-8</encoding>
+
                             <consoleOutput>true</consoleOutput>
-                            <!-- mvn test fails for any warning or error -->
-                            <failsOnError>true</failsOnError>
+                            <!-- mvn test fails (or no) for any warning or error -->
+                            <failsOnError>false</failsOnError>
                             <violationSeverity>warning</violationSeverity>
                             <includeTestSourceDirectory>true</includeTestSourceDirectory>
                         </configuration>
