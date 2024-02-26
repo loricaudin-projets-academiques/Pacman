@@ -10,7 +10,7 @@
 
 
 
-    <name>minimal-pom</name>
+    <name>TP1mvn</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -36,7 +36,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -56,6 +56,13 @@
             <artifactId>junit-platform-launcher</artifactId>
             <version>1.0.1</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-resources-plugin -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>2.6</version>
         </dependency>
     </dependencies>
 
