@@ -15,19 +15,11 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
+        <javadoc.version>3.5.0</javadoc.version>
     </properties>
-    
 
-    <dependencies>
-        <!-- JUNIT -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+
+
 
 
 </project>
