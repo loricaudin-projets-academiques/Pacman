@@ -1,5 +1,8 @@
 import javax.imageio.ImageIO;
+<<<<<<< HEAD
 import java.awt.*;
+=======
+>>>>>>> 050d81ef930e3d50e7d8fe08e4e7f9da9c117a05
 import java.awt.image.BufferedImage;
 
 import java.io.File;
@@ -13,6 +16,7 @@ public class App {
 
 
     private static final String ASCIICHARS = "`^”,:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
+
     private static String imagePath = "src/main/resources/Xbox_one_logo.png";
 
     public static void main(String args[]) {
