@@ -18,7 +18,7 @@ variables:
     -Djava.awt.headless=true
 
 
-image: maven:4-openjdk-8
+image: maven:3.6.1-jdk-11
 
 # Cache downloaded dependencies and plugins between builds.
 # To keep cache across branches add 'key: "$CI_JOB_NAME"'
