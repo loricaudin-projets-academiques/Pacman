@@ -16,10 +16,7 @@ public class App {
     private static String imagePath = "src/main/resources/Xbox_one_logo.png";
 
     public static void main(String args[]) {
-
-
-
-
+        
 
         BufferedImage rawbufferedImage = null;
 
