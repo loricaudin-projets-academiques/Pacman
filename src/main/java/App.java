@@ -1,10 +1,6 @@
 import javax.imageio.ImageIO;
-<<<<<<< HEAD
 import java.awt.*;
-=======
->>>>>>> 050d81ef930e3d50e7d8fe08e4e7f9da9c117a05
 import java.awt.image.BufferedImage;
-
 import java.io.File;
 import java.io.IOException;
 

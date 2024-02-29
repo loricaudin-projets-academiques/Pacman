@@ -188,7 +188,7 @@
 
                             <consoleOutput>true</consoleOutput>
                             <!-- mvn test fails (or no) for any warning or error -->
-                            <failsOnError>false</failsOnError>
+                            <failsOnError>true</failsOnError>
                             <violationSeverity>warning</violationSeverity>
                             <includeTestSourceDirectory>true</includeTestSourceDirectory>
                         </configuration>
