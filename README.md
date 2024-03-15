@@ -7,7 +7,12 @@ Une petite base de code vous est fournie et vous allez devoir appliquer quelques
 Ce TP est une introduction au projet de cette UE. Vous risquez d'avoir des
 difficultés plus tard si vous ne le réalisez pas correctement.
 
+Un grand merci à Matthieu Moy et l'équipe qui a travaillé sur les sources de
+ce sujet de TP. 
+
 ## Setup
+
+Ce TP est à réaliser en binôme.
 
 Ce TP a été testé sous Unix (macos et ubuntu) avec l'IDE IntelliJ ET les lignes
 de commande. Il est néanmoins possible de le réaliser sous windows. Il est encore
