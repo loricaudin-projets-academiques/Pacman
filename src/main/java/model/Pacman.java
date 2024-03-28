@@ -2,15 +2,15 @@ package model;
 
 /**
  * Classe Pacman qui contient la position de Pacman
- * et qui implémente la logique de mouvement
+ * et qui implémente la logique de mouvement.
  */
 public class Pacman {
-    public int direction = 0;
-    public int pacmanX;
-    public int pacmanY;
+    private int direction = 0;
+    private int pacmanX;
+    private int pacmanY;
 
     /**
-     * Constructeur pour la classe Pacman
+     * Constructeur pour la classe Pacman.
      * @param x0
      * @param y0
      */
@@ -20,25 +20,35 @@ public class Pacman {
         pacmanY = y0;
     }
 
+    /**
+     * Getter pour la direction.
+     * @return la position actuel de pacman
+     */
+
     public int getDirection() {
         return direction;
     }
 
     /**
      * Méthode pour le mouvement de pacman en fonction
-     * de la direction
+     * de la direction.
      */
 
     public void move() {
-        if (direction == 0) pacmanX++;
-        if (direction == 1) pacmanY++;
-        if (direction == 2) pacmanX--;
-        if (direction == 3) pacmanY--;
+        if (getDirection() == 0) {
+            pacmanX++;
+        } else if (direction == 1) {
+            pacmanY++;
+        } else if (direction == 2) {
+            pacmanX--;
+        } else if (direction == 3) {
+            pacmanY--;
+        }
 
     }
 
     /**
-     * Setter pour la direction
+     * Setter pour la direction.
      * @param direction
      */
 
