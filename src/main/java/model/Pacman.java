@@ -20,6 +20,10 @@ public class Pacman {
         pacmanY = y0;
     }
 
+    public int getDirection() {
+        return direction;
+    }
+
     /**
      * Méthode pour le mouvement de pacman en fonction
      * de la direction
