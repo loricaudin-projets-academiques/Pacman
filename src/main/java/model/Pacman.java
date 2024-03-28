@@ -15,7 +15,7 @@ public class Pacman {
      * @param y0
      */
 
-    public Pacman(final int x0,final int y0){
+    public Pacman(final int x0, final int y0) {
         pacmanX = x0;
         pacmanY = y0;
     }
@@ -52,7 +52,7 @@ public class Pacman {
      * @param direction
      */
 
-    public void setDirection(int direction) {
+    public void setDirection(final int direction) {
         this.direction = direction;
     }
 
