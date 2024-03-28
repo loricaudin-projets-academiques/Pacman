@@ -1,8 +1,11 @@
+import view.Labyrinthe;
+
 /**
  *
  */
 public class App {
     public static void main(String[] args){
-        System.out.println("Bonjour, ça va ?");
+        Labyrinthe window = new Labyrinthe();
+        window.setVisible(true);
     }
 }
