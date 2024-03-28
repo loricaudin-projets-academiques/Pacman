@@ -1,6 +1,9 @@
+import view.Labyrinthe;
+
 /**
  * Classe App pour notre application.
  */
+
 public final class App {
     /**
      * Permet d'éviter que cette classe ne puisse être instancié.
@@ -15,5 +18,8 @@ public final class App {
      */
     public static void main(final String[] args) {
         System.out.println("Bonjour, ça va ?");
+        Labyrinthe window = new Labyrinthe();
+        window.setVisible(true);
     }
+
 }
