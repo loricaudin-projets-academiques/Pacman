@@ -5,11 +5,18 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * 
+ */
 public class InitialisationMatrice {
 
-    public ArrayList<ArrayList<Integer>> matrice = new ArrayList<>();
+    private ArrayList<ArrayList<Integer>> matrice = new ArrayList<>();
 
-    public void lecture(String path) {
+    /**
+     * 
+     * @param path
+     */
+    public void lecture(final String path) {
         try {
             FileReader fileReader = new FileReader(path);
 
@@ -39,7 +46,12 @@ public class InitialisationMatrice {
         }
     }
 
-    public Integer countLine(String path) {
+    /**
+     * 
+     * @param path
+     * @return
+     */
+    public Integer countLine(final String path) {
         Integer count = 0;
 
         try {
