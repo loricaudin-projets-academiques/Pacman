@@ -5,34 +5,34 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-/**
- * 
- */
-public class HomeWindow extends JFrame implements ActionListener {
+public class LevelsWindow extends JDialog implements ActionListener {
     
+    private JFrame modalWindow;
     /**
      * 
      */
-    public HomeWindow() {
-        this.setTitle("Pac Man");
-        //this.setIconImage(new ImageIcon("src/icone.png").getImage());
+    public LevelsWindow(JFrame modalWindow) {
+        super(modalWindow, "Pacman - Choix du niveau");
+
+        this.modalWindow = modalWindow;
 
         this.setSize(700, 500);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
 
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
+        this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+
         this.setContentPane(this.createPanel());
     }
 
     private JPanel panel;
     private JButton buttonStart;
-    private JButton buttonExit;
-
+    private JButton buttonCancel;
+    
     /**
      * @return JPanel
      */
@@ -40,13 +40,13 @@ public class HomeWindow extends JFrame implements ActionListener {
         panel = (JPanel) getContentPane();
         panel.setLayout(new FlowLayout());
 
-        buttonStart = new JButton("Jouer");
+        buttonStart = new JButton("Commencer");
         buttonStart.addActionListener(this);
         panel.add(buttonStart);
 
-        buttonExit = new JButton("Quitter");
-        buttonExit.addActionListener(this);
-        panel.add(buttonExit);
+        buttonCancel = new JButton("Retour");
+        buttonCancel.addActionListener(this);
+        panel.add(buttonCancel);
 
 
         /* Instructions pour créer des widgets */
@@ -55,11 +55,10 @@ public class HomeWindow extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(final ActionEvent e) {
+    public void actionPerformed(ActionEvent e) {
         JButton source = (JButton) e.getSource();
         if (source == buttonStart) {
-            LevelsWindow levelsWindow = new LevelsWindow(this);
-            levelsWindow.setVisible(true);
+            modalWindow.dispose();
         } else {
             this.dispose();
         }
