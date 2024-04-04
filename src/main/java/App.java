@@ -1,20 +1,20 @@
-import model.InitialisationMatrice;
+import view.HomeWindow;
 
 /**
- *
+ * Classe principale de l'application.
  */
 public final class App {
-
-    private App() {
-    }
+    /**
+     * 
+     */
+    private App() { }
 
     /**
-     *
-     * @param args
+     * Méthode principale de l'application. Lance l'interface utilisateur du Pacman.
+     * @param args Les arguments de la ligne de commande.
      */
     public static void main(final String[] args) {
-        InitialisationMatrice initial = new InitialisationMatrice();
-
-        initial.lecture("src/main/ressources/map.txt");
+        HomeWindow window = new HomeWindow();
+        window.setVisible(true);
     }
 }
