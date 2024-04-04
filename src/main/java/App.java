@@ -1,25 +1,20 @@
-import view.Labyrinthe;
+import model.InitialisationMatrice;
 
 /**
- * Classe App pour notre application.
+ *
  */
-
 public final class App {
-    /**
-     * Permet d'éviter que cette classe ne puisse être instancié.
-     */
+
     private App() {
-        throw new AssertionError();
     }
 
     /**
-     * Début de l'application.
+     *
      * @param args
      */
     public static void main(final String[] args) {
-        System.out.println("Bonjour, ça va ?");
-        Labyrinthe window = new Labyrinthe();
-        window.setVisible(true);
-    }
+        InitialisationMatrice initial = new InitialisationMatrice();
 
+        initial.lecture("src/main/ressources/map.txt");
+    }
 }
