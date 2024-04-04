@@ -8,14 +8,18 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import model.RoundButton;
 
 /**
  * 
@@ -77,14 +81,14 @@ public class HomeWindow extends JFrame implements ActionListener {
         panelButton.setLayout(new FlowLayout());
         panelButton.setBackground(Color.BLACK);
 
-        buttonStart = new JButton("Jouer");
+        buttonStart = new RoundButton("Jouer");
         buttonStart.addActionListener(this);
         buttonStart.setForeground(
                 new Color(255, 255, 0));
-        buttonStart.setBackground(Color.BLUE);
+        buttonStart.setBackground(Color.BLACK);
         panelButton.add(buttonStart);
 
-        buttonExit = new JButton("Quitter");
+        buttonExit = new RoundButton("Quitter");
         buttonExit.addActionListener(this);
         buttonExit.setForeground(
                 new Color(255, 255, 0));
