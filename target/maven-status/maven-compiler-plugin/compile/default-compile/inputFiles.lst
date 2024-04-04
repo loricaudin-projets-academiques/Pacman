@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 C:\Users\morfi\OneDrive\Bureau\cours\BUT-S4\Qualit√© dev\projet - pacman\pacman\src\main\java\model\Observable.java
 C:\Users\morfi\OneDrive\Bureau\cours\BUT-S4\Qualit√© dev\projet - pacman\pacman\src\main\java\view\Observer.java
 C:\Users\morfi\OneDrive\Bureau\cours\BUT-S4\Qualit√© dev\projet - pacman\pacman\src\main\java\App.java
+C:\Users\morfi\OneDrive\Bureau\cours\BUT-S4\Qualit√© dev\projet - pacman\pacman\src\main\java\model\Pacman.java
+C:\Users\morfi\OneDrive\Bureau\cours\BUT-S4\Qualit√© dev\projet - pacman\pacman\src\main\java\view\Labyrinthe.java
 C:\Users\morfi\OneDrive\Bureau\cours\BUT-S4\Qualit√© dev\projet - pacman\pacman\src\main\java\model\InitialisationMatrice.java
-=======
-C:\Users\etulyon1\OneDrive\Doc.Loric\#Travail\BUT Informatique\2Ëme annÈe Semestre 4 (G1S4B)\R4.02 - QualitÈ de dÈveloppement\pacman\src\main\java\App.java
-C:\Users\etulyon1\OneDrive\Doc.Loric\#Travail\BUT Informatique\2Ëme annÈe Semestre 4 (G1S4B)\R4.02 - QualitÈ de dÈveloppement\pacman\src\main\java\view\LevelsWindow.java
-C:\Users\etulyon1\OneDrive\Doc.Loric\#Travail\BUT Informatique\2Ëme annÈe Semestre 4 (G1S4B)\R4.02 - QualitÈ de dÈveloppement\pacman\src\main\java\view\HomeWindow.java
-C:\Users\etulyon1\OneDrive\Doc.Loric\#Travail\BUT Informatique\2Ëme annÈe Semestre 4 (G1S4B)\R4.02 - QualitÈ de dÈveloppement\pacman\src\main\java\view\Labyrinthe.java
->>>>>>> feature/interfaceGraphique
+C:\Users\morfi\OneDrive\Bureau\cours\BUT-S4\Qualit√© dev\projet - pacman\pacman\src\main\java\view\HomeWindow.java
+C:\Users\morfi\OneDrive\Bureau\cours\BUT-S4\Qualit√© dev\projet - pacman\pacman\src\main\java\view\LevelsWindow.java
