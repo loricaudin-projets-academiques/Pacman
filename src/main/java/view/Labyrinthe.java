@@ -1,18 +1,20 @@
 package view;
-import java.awt.event.ActionEvent;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
 /**
- * Crée la fenetre principal.
- * @return Le fenetre principal. créé, avec le labyrinthe chargé.
+ * Classe Labyrinthe.
  */
+
 public class Labyrinthe extends JFrame implements KeyListener {
+
     /**
- * Constructeur de la classe Labyrinthe.
- */
+     * Constructeur pour Labyrinthe.
+     */
     public Labyrinthe() {
         this.setContentPane(this.createPanel());
         this.setTitle("Pacman");
@@ -39,36 +41,31 @@ public class Labyrinthe extends JFrame implements KeyListener {
         this.addKeyListener(this);
         return myPanel;
     }
-/**
- * Affiche une boîte de dialogue pour mettre en pause la fenêtre.
- */
-    private void menuPause() {
-        JOptionPane.showMessageDialog(this,
-                "Fenêtre en pause", "Pause",
+
+    /**
+     * Création d'un JOptionPane pour le menuPause.
+     * @return JOptionPane
+     */
+    private JOptionPane menuPause() {
+        JFrame pauseMenu = new JFrame();
+        JOptionPane.showMessageDialog(pauseMenu,
+                "Fenetre en pause", "Pause",
                 JOptionPane.INFORMATION_MESSAGE);
-
-    }
-/**
- * class pour crée le boutton.
- */
-    public final void actionPerformed(final ActionEvent e) {
-
+        return menuPause();
     }
 
     @Override
-    public final void keyPressed(final KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-            menuPause();
-        }
-    }
-
-    @Override
-    public final void keyReleased(final KeyEvent e) {
+    public void keyPressed(final KeyEvent e) {
         
+    }
+
+    @Override
+    public void keyReleased(final KeyEvent e) {
+        System.out.println(e.VK_ESCAPE);
     }
 
     @Override
     public void keyTyped(final KeyEvent e) {
-        
+        System.out.println(e.getKeyCode());
     }
 }
