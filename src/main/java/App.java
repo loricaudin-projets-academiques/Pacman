@@ -1,10 +1,15 @@
 import view.Labyrinthe;
 
 /**
- *
+ * Classe principale de l'application.
  */
-public class App {
-    public static void main(String[] args){
+public final class App {
+    private App() { }
+/**
+ * Méthode principale de l'application. Lance l'interface utilisateur du Pacman.
+ * @param args Les arguments de la ligne de commande.
+ */
+    public static void main(final String[] args) {
         Labyrinthe window = new Labyrinthe();
         window.setVisible(true);
     }
