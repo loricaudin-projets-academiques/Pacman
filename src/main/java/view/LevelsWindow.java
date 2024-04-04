@@ -9,13 +9,16 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/**
+ * 
+ */
 public class LevelsWindow extends JDialog implements ActionListener {
     
     private JFrame modalWindow;
     /**
      * 
      */
-    public LevelsWindow(JFrame modalWindow) {
+    public LevelsWindow(final JFrame modalWindow) {
         super(modalWindow, "Pacman - Choix du niveau");
 
         this.modalWindow = modalWindow;
@@ -55,7 +58,7 @@ public class LevelsWindow extends JDialog implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
         JButton source = (JButton) e.getSource();
         if (source == buttonStart) {
             modalWindow.dispose();
