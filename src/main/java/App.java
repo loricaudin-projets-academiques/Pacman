@@ -1,4 +1,3 @@
-import view.Labyrinthe;
 import view.HomeWindow;
 
 /**

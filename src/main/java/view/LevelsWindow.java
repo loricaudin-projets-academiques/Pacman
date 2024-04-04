@@ -59,6 +59,8 @@ public class LevelsWindow extends JDialog implements ActionListener {
         JButton source = (JButton) e.getSource();
         if (source == buttonStart) {
             modalWindow.dispose();
+            Labyrinthe labyrinthe = new Labyrinthe();
+            labyrinthe.setVisible(true);
         } else {
             this.dispose();
         }
