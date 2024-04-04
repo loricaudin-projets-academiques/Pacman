@@ -1,4 +1,6 @@
 package view;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -9,7 +11,7 @@ import javax.swing.JPanel;
  * Crée la fenetre principal.
  * @return Le fenetre principal. créé, avec le labyrinthe chargé.
  */
-public class Labyrinthe extends JFrame implements KeyListener {
+public class Labyrinthe extends JFrame implements KeyListener{
     /**
  * Constructeur de la classe Labyrinthe.
  */
@@ -26,16 +28,22 @@ public class Labyrinthe extends JFrame implements KeyListener {
         return this.myPanel;
     }
 
-    private void setMyPanel(final JPanel myPanel) {
-        this.myPanel = myPanel;
-    }
+    // private void setMyPanel(final JPanel myPanel) {
+    //     this.myPanel = myPanel;
+    // }
 
     /**
      * Création d'un JPanel.
      * @return JPanel
      */
     private JPanel createPanel() {
-        myPanel = (JPanel) getContentPane();
+        myPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                drawCarre(g);
+            }
+        };
         this.addKeyListener(this);
         return myPanel;
     }
@@ -47,6 +55,10 @@ public class Labyrinthe extends JFrame implements KeyListener {
                 "Fenêtre en pause", "Pause",
                 JOptionPane.INFORMATION_MESSAGE);
 
+    }
+    public void drawCarre(Graphics g){
+        g.fillRect(0,0,50,50);
+        g.setColor(Color.red);
     }
 /**
  * class pour crée le boutton.
