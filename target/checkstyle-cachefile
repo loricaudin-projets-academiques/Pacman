@@ -1,19 +1,20 @@
-<<<<<<< HEAD
-#Thu Apr 04 09:11:24 CEST 2024
-C\:\\Users\\morfi\\OneDrive\\Bureau\\cours\\BUT-S4\\Qualit\u00E9\ dev\\projet\ -\ pacman\\pacman\\src\\main\\java\\App.java=1712212246705
-C\:\\Users\\morfi\\OneDrive\\Bureau\\cours\\BUT-S4\\Qualit\u00E9\ dev\\projet\ -\ pacman\\pacman\\src\\main\\java\\model\\InitialisationMatrice.java=1712213697319
-C\:\\Users\\morfi\\OneDrive\\Bureau\\cours\\BUT-S4\\Qualit\u00E9\ dev\\projet\ -\ pacman\\pacman\\src\\main\\java\\model\\Observable.java=1712213729260
-C\:\\Users\\morfi\\OneDrive\\Bureau\\cours\\BUT-S4\\Qualit\u00E9\ dev\\projet\ -\ pacman\\pacman\\src\\main\\java\\view\\Observer.java=1712213704395
-configuration*?=DE64224DE5F97DA4B62C1BE38B55F7C785DFAE22
-module-resource*?\:checkstyle-suppressions.xml=60A03EF84045BB87D6676EE1E5426816606C9892
-module-resource*?\:checkstyle-xpath-suppressions.xml=CFB9A12E9B3E9BB1DB07D97561B6772A771C3696
-=======
-#Thu Apr 04 09:20:34 CEST 2024
+#Thu Apr 04 10:53:44 CEST 2024
+=\=\=\=\=\=\=
 configuration*?=F7D4DFC1B120CA78B2054F9E64C53759A9228B2F
-C\:\\Users\\etulyon1\\OneDrive\\Doc.Loric\\\#Travail\\BUT\ Informatique\\2\u00E8me\ ann\u00E9e\ Semestre\ 4\ (G1S4B)\\R4.02\ -\ Qualit\u00E9\ de\ d\u00E9veloppement\\pacman\\src\\main\\java\\view\\LevelsWindow.java=1712215224444
-C\:\\Users\\etulyon1\\OneDrive\\Doc.Loric\\\#Travail\\BUT\ Informatique\\2\u00E8me\ ann\u00E9e\ Semestre\ 4\ (G1S4B)\\R4.02\ -\ Qualit\u00E9\ de\ d\u00E9veloppement\\pacman\\src\\main\\java\\App.java=1712215012953
-C\:\\Users\\etulyon1\\OneDrive\\Doc.Loric\\\#Travail\\BUT\ Informatique\\2\u00E8me\ ann\u00E9e\ Semestre\ 4\ (G1S4B)\\R4.02\ -\ Qualit\u00E9\ de\ d\u00E9veloppement\\pacman\\src\\main\\java\\view\\Labyrinthe.java=1712215008084
+C\:\\Users\\etulyon1\\OneDrive\\Doc.Loric\\\#Travail\\BUT\ Informatique\\2\u00E8me\ ann\u00E9e\ Semestre\ 4\ (G1S4B)\\R4.02\ -\ Qualit\u00E9\ de\ d\u00E9veloppement\\pacman\\src\\main\\java\\view\\LevelsWindow.java=1712220481511
+C\:\\Users\\etulyon1\\OneDrive\\Doc.Loric\\\#Travail\\BUT\ Informatique\\2\u00E8me\ ann\u00E9e\ Semestre\ 4\ (G1S4B)\\R4.02\ -\ Qualit\u00E9\ de\ d\u00E9veloppement\\pacman\\src\\main\\java\\App.java=1712215504571
+C\:\\Users\\etulyon1\\OneDrive\\Doc.Loric\\\#Travail\\BUT\ Informatique\\2\u00E8me\ ann\u00E9e\ Semestre\ 4\ (G1S4B)\\R4.02\ -\ Qualit\u00E9\ de\ d\u00E9veloppement\\pacman\\src\\main\\java\\controller\\StartController.java=1712220749228
+>>>>>>>=feature/interfaceGraphique
+C\:\\Users\\etulyon1\\OneDrive\\Doc.Loric\\\#Travail\\BUT\ Informatique\\2\u00E8me\ ann\u00E9e\ Semestre\ 4\ (G1S4B)\\R4.02\ -\ Qualit\u00E9\ de\ d\u00E9veloppement\\pacman\\src\\main\\java\\view\\HomeWindow.java=1712215294868
+C\:\\Users\\etulyon1\\OneDrive\\Doc.Loric\\\#Travail\\BUT\ Informatique\\2\u00E8me\ ann\u00E9e\ Semestre\ 4\ (G1S4B)\\R4.02\ -\ Qualit\u00E9\ de\ d\u00E9veloppement\\pacman\\src\\main\\java\\view\\Observer.java=1712215267852
+C\:\\Users\\etulyon1\\OneDrive\\Doc.Loric\\\#Travail\\BUT\ Informatique\\2\u00E8me\ ann\u00E9e\ Semestre\ 4\ (G1S4B)\\R4.02\ -\ Qualit\u00E9\ de\ d\u00E9veloppement\\pacman\\src\\main\\java\\model\\Pacman.java=1712215267849
+C\:\\Users\\morfi\\OneDrive\\Bureau\\cours\\BUT-S4\\Qualit\u00E9\ dev\\projet\ -\ pacman\\pacman\\src\\main\\java\\model\\InitialisationMatrice.java=1712213697319
+C\:\\Users\\etulyon1\\OneDrive\\Doc.Loric\\\#Travail\\BUT\ Informatique\\2\u00E8me\ ann\u00E9e\ Semestre\ 4\ (G1S4B)\\R4.02\ -\ Qualit\u00E9\ de\ d\u00E9veloppement\\pacman\\src\\main\\java\\model\\InitialisationMatrice.java=1712220812894
+C\:\\Users\\morfi\\OneDrive\\Bureau\\cours\\BUT-S4\\Qualit\u00E9\ dev\\projet\ -\ pacman\\pacman\\src\\main\\java\\model\\Observable.java=1712213729260
+C\:\\Users\\etulyon1\\OneDrive\\Doc.Loric\\\#Travail\\BUT\ Informatique\\2\u00E8me\ ann\u00E9e\ Semestre\ 4\ (G1S4B)\\R4.02\ -\ Qualit\u00E9\ de\ d\u00E9veloppement\\pacman\\src\\main\\java\\view\\Labyrinthe.java=1712215481393
 module-resource*?\:checkstyle-xpath-suppressions.xml=21E08813726F3E9B753978D7130750853B18AACD
 module-resource*?\:checkstyle-suppressions.xml=71DDDBA6F397DAF8D161C1D7FF3A3655D82C8BEC
-C\:\\Users\\etulyon1\\OneDrive\\Doc.Loric\\\#Travail\\BUT\ Informatique\\2\u00E8me\ ann\u00E9e\ Semestre\ 4\ (G1S4B)\\R4.02\ -\ Qualit\u00E9\ de\ d\u00E9veloppement\\pacman\\src\\main\\java\\view\\HomeWindow.java=1712214324025
->>>>>>> feature/interfaceGraphique
+C\:\\Users\\morfi\\OneDrive\\Bureau\\cours\\BUT-S4\\Qualit\u00E9\ dev\\projet\ -\ pacman\\pacman\\src\\main\\java\\App.java=1712212246705
+C\:\\Users\\morfi\\OneDrive\\Bureau\\cours\\BUT-S4\\Qualit\u00E9\ dev\\projet\ -\ pacman\\pacman\\src\\main\\java\\view\\Observer.java=1712213704395
+<<<<<<<=HEAD
+C\:\\Users\\etulyon1\\OneDrive\\Doc.Loric\\\#Travail\\BUT\ Informatique\\2\u00E8me\ ann\u00E9e\ Semestre\ 4\ (G1S4B)\\R4.02\ -\ Qualit\u00E9\ de\ d\u00E9veloppement\\pacman\\src\\main\\java\\model\\Observable.java=1712215267846

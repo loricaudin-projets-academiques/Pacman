@@ -11,12 +11,20 @@ import java.util.ArrayList;
 public class InitialisationMatrice extends Observable {
 
     private ArrayList<ArrayList<Integer>> matrice = new ArrayList<>();
+    private String path;
+
+
+    /**
+     * @param path
+     */
+    public InitialisationMatrice(final String path) {
+        this.path = path;
+    }
 
     /**
      * methodes pour lire des données dans un fichier et construire la matrice du jeu.
-     * @param path
      */
-    public void lecture(final String path) {
+    public void lecture() {
         try {
             FileReader fileReader = new FileReader(path);
 
