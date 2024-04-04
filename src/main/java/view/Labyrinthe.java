@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
@@ -8,13 +7,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
- * Classe Labyrinthe
+ * Classe Labyrinthe.
  */
 
 public class Labyrinthe extends JFrame implements KeyListener {
 
     /**
-     * Constructeur pour Labyrinthe
+     * Constructeur pour Labyrinthe.
      */
     public Labyrinthe() {
         this.setContentPane(this.createPanel());
@@ -29,12 +28,12 @@ public class Labyrinthe extends JFrame implements KeyListener {
         return this.myPanel;
     }
 
-    private void setMyPanel(JPanel myPanel) {
+    private void setMyPanel(final JPanel myPanel) {
         this.myPanel = myPanel;
     }
 
     /**
-     * Création d'un JPanel
+     * Création d'un JPanel.
      * @return JPanel
      */
     private JPanel createPanel() {
@@ -44,7 +43,7 @@ public class Labyrinthe extends JFrame implements KeyListener {
     }
 
     /**
-     * Création d'un JOptionPane pour le menuPause
+     * Création d'un JOptionPane pour le menuPause.
      * @return JOptionPane
      */
     private JOptionPane menuPause() {
@@ -53,11 +52,6 @@ public class Labyrinthe extends JFrame implements KeyListener {
                 "Fenetre en pause", "Pause",
                 JOptionPane.INFORMATION_MESSAGE);
         return menuPause();
-    }
-
-
-    public void actionPerformed(ActionEvent e) {
-
     }
 
     @Override
