@@ -1,9 +1,12 @@
 package view;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -29,7 +32,7 @@ public class LevelsWindow extends JDialog implements ActionListener {
 
         this.setModal(true);
 
-        this.setSize(700, 500);
+        this.setSize(200, 200);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
 
@@ -48,24 +51,44 @@ public class LevelsWindow extends JDialog implements ActionListener {
      */
     private JPanel createPanel() {
         panel = (JPanel) getContentPane();
-        panel.setLayout(new FlowLayout());
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); //Aligner verticalement les widgets
+        panel.setAlignmentX(JPanel.CENTER_ALIGNMENT); //Centrer horizontalement
+
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); //Ajouter un espacement
 
         JLabel labelSelectLevel = new JLabel("Choix du niveau");
+        labelSelectLevel.setAlignmentX(CENTER_ALIGNMENT);
         panel.add(labelSelectLevel);
+
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Ajouter un espacement
+
+        JPanel panelComboBox = new JPanel();
+        panelComboBox.setLayout(new FlowLayout());
 
         comboxBoxLevels = new JComboBox<String>();
         comboxBoxLevels.addItem("Niveau 1");
-        comboxBoxLevels.addItem("Niveau 2");
+        //comboxBoxLevels.addItem("Niveau 2");
 
-        panel.add(comboxBoxLevels);
+        panelComboBox.add(comboxBoxLevels);
+        
+        panelComboBox.setAlignmentX(CENTER_ALIGNMENT);
+        panel.add(panelComboBox);
+
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Ajouter un espacement
 
         buttonStart = new JButton("Commencer");
         buttonStart.addActionListener(this);
+        buttonStart.setAlignmentX(CENTER_ALIGNMENT);
         panel.add(buttonStart);
+
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Ajouter un espacement
 
         buttonCancel = new JButton("Retour");
         buttonCancel.addActionListener(this);
+        buttonCancel.setAlignmentX(CENTER_ALIGNMENT);
         panel.add(buttonCancel);
+
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Ajouter un espacement
 
 
         /* Instructions pour créer des widgets */
