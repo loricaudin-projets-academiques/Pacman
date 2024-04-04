@@ -56,4 +56,12 @@ public class Pacman {
         this.direction = direction;
     }
 
+    public int getPacmanX() {
+        return pacmanX;
+    }
+
+    public int getPacmanY() {
+        return pacmanY;
+    }
+
 }
