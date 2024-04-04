@@ -6,14 +6,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * 
+ * class de contruction de la matrice de jeu.
  */
-public class InitialisationMatrice {
+public class InitialisationMatrice extends Observable {
 
     private ArrayList<ArrayList<Integer>> matrice = new ArrayList<>();
 
     /**
-     * 
+     * methodes pour lire des données dans un fichier et construire la matrice du jeu.
      * @param path
      */
     public void lecture(final String path) {
@@ -44,10 +44,12 @@ public class InitialisationMatrice {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        super.notifyObservers();
     }
 
     /**
-     * 
+     * methode pour retourner le nombre de ligne du fichier.
      * @param path
      * @return
      */
@@ -71,5 +73,9 @@ public class InitialisationMatrice {
         }
 
         return count;
+    }
+
+    public ArrayList<ArrayList<Integer>> getMatrice() {
+        return matrice;
     }
 }
