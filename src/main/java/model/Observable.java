@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * class observalbe qui liste tout les observers.
+ * class observable qui liste tout les observers.
  */
 public abstract class Observable {
     private List<Observer> observerList;
