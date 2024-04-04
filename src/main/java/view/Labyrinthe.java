@@ -1,5 +1,4 @@
 package view;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -23,12 +22,11 @@ public class Labyrinthe extends JFrame implements KeyListener {
         return myPanel;
     }
 
-    private JOptionPane menuPause() {
-        JFrame pauseMenu = new JFrame();
-        JOptionPane.showMessageDialog(pauseMenu,
-                "Fenetre en pause", "Pause",
+    private void menuPause() {
+        JOptionPane.showMessageDialog(this,
+                "Fenêtre en pause", "Pause",
                 JOptionPane.INFORMATION_MESSAGE);
-        return menuPause();
+
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -37,16 +35,23 @@ public class Labyrinthe extends JFrame implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            menuPause();
+        }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        System.out.println(e.VK_ESCAPE);
+        
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-        System.out.println(e.getKeyCode());
+        
     }
+
+    // public static void main(String[] args) {
+    //     Labyrinthe labyrinth = new Labyrinthe();
+    //     labyrinth.setVisible(true);
+    // }
 }
