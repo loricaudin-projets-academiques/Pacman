@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * 
  */
-public class InitialisationMatrice {
+public class InitialisationMatrice extends Observable {
 
     private ArrayList<ArrayList<Integer>> matrice = new ArrayList<>();
 
@@ -44,6 +44,8 @@ public class InitialisationMatrice {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        super.notifyObservers();
     }
 
     /**
@@ -71,5 +73,9 @@ public class InitialisationMatrice {
         }
 
         return count;
+    }
+
+    public ArrayList<ArrayList<Integer>> getMatrice() {
+        return matrice;
     }
 }
