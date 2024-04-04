@@ -72,7 +72,7 @@ public class LevelsWindow extends JDialog implements ActionListener {
      */
     private JPanel createPanel() {
         panel = (JPanel) getContentPane();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); // Aligner verticalement les widgets
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); //Aligner verticalement les widgets
         panel.setAlignmentX(JPanel.CENTER_ALIGNMENT); // Centrer horizontalement
 
         panel.add(Box.createRigidArea(new Dimension(0, 10))); // Ajouter un espacement
