@@ -7,7 +7,15 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+/**
+ * Classe Labyrinthe
+ */
+
 public class Labyrinthe extends JFrame implements KeyListener {
+
+    /**
+     * Constructeur pour Labyrinthe
+     */
     public Labyrinthe() {
         this.setContentPane(this.createPanel());
         this.setTitle("Pacman");
@@ -15,14 +23,30 @@ public class Labyrinthe extends JFrame implements KeyListener {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
-    JPanel myPanel;
+    private JPanel myPanel;
 
+    public JPanel getMyPanel() {
+        return this.myPanel;
+    }
+
+    private void setMyPanel(JPanel myPanel) {
+        this.myPanel = myPanel;
+    }
+
+    /**
+     * Création d'un JPanel
+     * @return JPanel
+     */
     private JPanel createPanel() {
         myPanel = (JPanel) getContentPane();
         this.addKeyListener(this);
         return myPanel;
     }
 
+    /**
+     * Création d'un JOptionPane pour le menuPause
+     * @return JOptionPane
+     */
     private JOptionPane menuPause() {
         JFrame pauseMenu = new JFrame();
         JOptionPane.showMessageDialog(pauseMenu,
@@ -31,22 +55,23 @@ public class Labyrinthe extends JFrame implements KeyListener {
         return menuPause();
     }
 
+
     public void actionPerformed(ActionEvent e) {
 
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
+    public void keyPressed(final KeyEvent e) {
         
     }
 
     @Override
-    public void keyReleased(KeyEvent e) {
+    public void keyReleased(final KeyEvent e) {
         System.out.println(e.VK_ESCAPE);
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {
+    public void keyTyped(final KeyEvent e) {
         System.out.println(e.getKeyCode());
     }
 }
