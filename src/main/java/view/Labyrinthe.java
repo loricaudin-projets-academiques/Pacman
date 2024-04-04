@@ -47,6 +47,8 @@ public class Labyrinthe extends JFrame implements KeyListener{
         this.addKeyListener(this);
         return myPanel;
     }
+
+    
 /**
  * Affiche une boîte de dialogue pour mettre en pause la fenêtre.
  */
