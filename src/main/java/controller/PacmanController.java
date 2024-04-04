@@ -11,6 +11,26 @@ public class PacmanController {
         this.isPaused = false;
     }
 
+    public void handlePause() {
+        this.isPaused = !this.isPaused;
+    }
+
+    public void handleMovement(Pacman.Direction direction) {
+        if (!isPaused) {
+            model.setDirection(direction);
+        }
+    }
+
+    public void updateModel() {
+        if (!isPaused) {
+            model.move();
+        }
+    }
+
+    public boolean isPaused() {
+        return isPaused;
+    }
+
     
 
 }
