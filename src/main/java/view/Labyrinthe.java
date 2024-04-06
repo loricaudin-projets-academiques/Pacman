@@ -66,6 +66,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         };
         myPanel.setBackground(Color.black);
         this.addKeyListener(this);
+        
         return myPanel;
     }
 

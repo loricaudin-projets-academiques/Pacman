@@ -6,9 +6,13 @@ package model;
  */
 public class Pacman {
 
-    public enum Direction  {
+    /**
+     * 
+     */
+    public enum Direction {
         UP, DOWN, LEFT, RIGHT
     }
+
     private Direction direction;
     private int pacmanX;
     private int pacmanY;
@@ -29,7 +33,6 @@ public class Pacman {
      * Méthode pour le mouvement de pacman en fonction
      * de la direction.
      */
-
     public void move() {
         switch (direction) {
             case UP:
@@ -44,6 +47,8 @@ public class Pacman {
             case RIGHT:
                 pacmanX++;
                 break;
+            default:
+                break;
         }
     }
 
@@ -51,8 +56,7 @@ public class Pacman {
      * Setter pour la direction.
      * @param direction
      */
-
-    public void setDirection(Direction direction) {
+    public void setDirection(final Direction direction) {
         this.direction = direction;
     }
 
