@@ -5,7 +5,11 @@ package model;
  * et qui implémente la logique de mouvement.
  */
 public class Pacman {
-    private int direction = 0;
+
+    public enum Direction  {
+        UP, DOWN, LEFT, RIGHT
+    }
+    private Direction direction;
     private int pacmanX;
     private int pacmanY;
 
@@ -20,14 +24,6 @@ public class Pacman {
         pacmanY = y0;
     }
 
-    /**
-     * Getter pour la direction.
-     * @return la position actuel de pacman
-     */
-
-    public int getDirection() {
-        return direction;
-    }
 
     /**
      * Méthode pour le mouvement de pacman en fonction
@@ -35,16 +31,20 @@ public class Pacman {
      */
 
     public void move() {
-        if (getDirection() == 0) {
-            pacmanX++;
-        } else if (direction == 1) {
-            pacmanY++;
-        } else if (direction == 2) {
-            pacmanX--;
-        } else if (direction == 3) {
-            pacmanY--;
+        switch (direction) {
+            case UP:
+                pacmanY--;
+                break;
+            case DOWN:
+                pacmanY++;
+                break;
+            case LEFT:
+                pacmanX--;
+                break;
+            case RIGHT:
+                pacmanX++;
+                break;
         }
-
     }
 
     /**
@@ -52,7 +52,7 @@ public class Pacman {
      * @param direction
      */
 
-    public void setDirection(final int direction) {
+    public void setDirection(Direction direction) {
         this.direction = direction;
     }
 
