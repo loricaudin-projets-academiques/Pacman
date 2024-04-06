@@ -2,6 +2,7 @@ package controller;
 
 import model.InitialisationMatrice;
 import view.Labyrinthe;
+import view.Observer;
 
 /**
  * 
@@ -25,8 +26,8 @@ public class StartController {
         InitialisationMatrice matrice = new InitialisationMatrice(path);
         matrice.lecture();
 
-        Labyrinthe labyrinthe = new Labyrinthe();
-        //matrice.addObserver((Observer) labyrinthe);
+        Labyrinthe labyrinthe = new Labyrinthe(matrice);
+        matrice.addObserver((Observer) labyrinthe);
         labyrinthe.setVisible(true);
 
         
