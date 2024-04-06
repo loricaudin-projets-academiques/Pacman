@@ -39,14 +39,14 @@ public class InitialisationMatrice extends Observable {
                 ArrayList<Integer> matLine = new ArrayList<>();
 
                 for (String word : words) {
-                    System.out.println(word);
+                    //System.out.println(word);
                     matLine.add(Integer.parseInt(word));
                 }
 
                 line = reader.readLine();
                 matrice.add(matLine);
 
-                System.out.println(matrice);
+                //System.out.println(matrice);
             }
             reader.close();
         } catch (IOException e) {
