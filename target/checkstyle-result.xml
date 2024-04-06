@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="10.12.1">
-<<<<<<< HEAD
-=======
-<file name="C:\Users\etulyon1\OneDrive\Doc.Loric\#Travail\BUT Informatique\2ème année Semestre 4 (G1S4B)\R4.02 - Qualité de développement\pacman\src\main\java\view\LevelsWindow.java">
+<file name="/Users/david/Desktop/IUT Lyon1/BUT 2/S4/Qualité Dev/Pacman/src/main/java/controller/PacmanController.java">
+<error line="36" column="32" severity="error" message="Parameter direction should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
 </file>
->>>>>>> feature/interfaceGraphique
+<file name="/Users/david/Desktop/IUT Lyon1/BUT 2/S4/Qualité Dev/Pacman/src/main/java/model/Pacman.java">
+<error line="9" column="5" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="34" column="9" severity="error" message="switch without &quot;default&quot; clause." source="com.puppycrawl.tools.checkstyle.checks.coding.MissingSwitchDefaultCheck"/>
+<error line="55" column="30" severity="error" message="Parameter direction should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+</file>
+<file name="/Users/david/Desktop/IUT Lyon1/BUT 2/S4/Qualité Dev/Pacman/src/main/java/view/Labyrinthe.java">
+<error line="21" column="23" severity="error" message="Parameter controller should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="21" column="52" severity="error" message="Parameter pacman should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<error line="68" column="9" severity="error" message="switch without &quot;default&quot; clause." source="com.puppycrawl.tools.checkstyle.checks.coding.MissingSwitchDefaultCheck"/>
+<error line="68" column="9" severity="error" message="&apos;switch&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
+<error line="68" column="9" severity="error" message="&apos;switch&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+</file>
 </checkstyle>
