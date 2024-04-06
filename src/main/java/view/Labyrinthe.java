@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import model.InitialisationMatrice;
+import model.Pacman;
 /**
  * Crée la fenetre principal.
  * @return Le fenetre principal. créé, avec le labyrinthe chargé.
@@ -66,7 +67,11 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         };
         myPanel.setBackground(Color.black);
         this.addKeyListener(this);
-        
+        myPanel.setLayout(null);
+
+        Pacman pacman = new Pacman(50, 50);
+        myPanel.add(pacman);
+
         return myPanel;
     }
 
