@@ -52,7 +52,7 @@ public class Pacman extends JLabel {
     /**
      * 
      */
-    private ImageIcon getImagePacMan() {
+    public ImageIcon getImagePacMan() {
         ImageIcon imagePacman = new ImageIcon("src/main/ressources/pacman.png");
         Image imagePacmanEdit = imagePacman.getImage();
         imagePacmanEdit = imagePacmanEdit.getScaledInstance(
@@ -62,6 +62,14 @@ public class Pacman extends JLabel {
         );
         imagePacman = new ImageIcon(imagePacmanEdit);
         return imagePacman;
+    }
+
+    public int getPacmanX() {
+        return pacmanX;
+    }
+
+    public int getPacmanY() {
+        return pacmanY;
     }
 
     /**
