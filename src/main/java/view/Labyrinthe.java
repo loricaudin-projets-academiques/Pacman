@@ -1,6 +1,6 @@
 package view;
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
+
 import controller.PacmanController;
 import model.Pacman;
 
@@ -9,9 +9,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import model.InitialisationMatrice;
 import model.Pacman;
@@ -25,7 +23,10 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     private ArrayList<Integer[]> positionsSquares;
     private ArrayList<Integer[]> freeBoxes;
 
+    private ArrayList<Integer[]> pacmanPositions;
+
     private PacmanController controller;
+    private Pacman pacman;
 //    private Pacman pacman;
     /**
      * Constructeur de la classe Labyrinthe.
@@ -37,8 +38,12 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         this.freeBoxes = new ArrayList<>();
         genererPositionsSquares(this.matrice.getMatrice());
 
-        this.controller = controller;
-        this.pacman = pacman;
+
+        this.pacman = new Pacman(freeBoxes);
+        this.controller = new PacmanController(pacman);
+
+
+        this.pacmanPositions = new ArrayList<>();
 
         this.setContentPane(this.createPanel());
         this.setTitle("Pac Man");
@@ -52,7 +57,6 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     private JPanel myPanel;
     private int tailleCarre = 50;
-    private Pacman pacman;
 
     public JPanel getMyPanel() {
         return this.myPanel;
@@ -75,12 +79,13 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 for (int ii = 0; ii < positionsSquares.size(); ii++) {
                     drawSquare(g, positionsSquares.get(ii)[0], positionsSquares.get(ii)[1]);
                 }
+
+                drawPacman(g, pacman.getPacmanX(), pacman.getPacmanY());
             }
         };
         myPanel.setBackground(Color.black);
         myPanel.setLayout(null);
 
-        pacman = new Pacman(freeBoxes);
         myPanel.add(pacman);
 
         this.addKeyListener(this);
@@ -118,6 +123,17 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         g.setColor(Color.blue);
         g.fillRect(x + padding, y + padding, tailleCarre, tailleCarre);
     }
+
+
+
+    private void drawPacman(final Graphics g, final int x, final int y) {
+        int padding = 5;
+        g.drawImage(pacman.getImagePacMan().getImage(), x + padding, y + padding, tailleCarre, tailleCarre, null);
+    }
+
+
+
+
     /**
      * classe pour créer le boutton.
      */
@@ -144,6 +160,8 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 controller.handlePause();
                 break;
         }
+
+        myPanel.repaint();
     }
 
     @Override
