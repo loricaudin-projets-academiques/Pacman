@@ -63,20 +63,28 @@ public class Pacman extends JLabel {
         imagePacman = new ImageIcon(imagePacmanEdit);
         return imagePacman;
     }
-
+    /**
+     * @return pacmanX
+     */
     public int getPacmanX() {
         return pacmanX;
     }
-
+    /**
+     * @return pacmanY
+     */
     public int getPacmanY() {
         return pacmanY;
     }
-
-    public void setPacmanX(int pacmanX) {
+    /**
+     * @param pacmanX
+     */
+    public void setPacmanX(final int pacmanX) {
         this.pacmanX = pacmanX;
     }
-
-    public void setPacmanY(int pacmanY) {
+    /**
+     * @param pacmanY
+     */
+    public void setPacmanY(final int pacmanY) {
         this.pacmanY = pacmanY;
     }
 
@@ -107,6 +115,8 @@ public class Pacman extends JLabel {
             case RIGHT:
                 pacmanX += afstand;
                 break;
+            default:
+                break;
         }
         updatePosition();
     }
@@ -116,11 +126,7 @@ public class Pacman extends JLabel {
      * @param direction
      */
     public void setDirection(final Direction direction) {
-        ArrayList<Direction> possiblDirections = checkPossibleDirections();
-        if (possiblDirections.contains(direction)) {
-            this.direction = direction;
-        }
-        
+        this.direction = direction;
     }
 
     /**

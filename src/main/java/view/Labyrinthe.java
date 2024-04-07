@@ -1,18 +1,21 @@
 package view;
-import java.awt.*;
 
 import controller.PacmanController;
 import model.Pacman;
+
+import java.awt.Graphics;
+import java.awt.Color;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import model.InitialisationMatrice;
-import model.Pacman;
 /**
  * Crée la fenetre principal.
  * @return Le fenetre principal. créé, avec le labyrinthe chargé.
@@ -20,25 +23,20 @@ import model.Pacman;
 public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     private InitialisationMatrice matrice;
-    private ArrayList<Integer[]> positionsSquares;
-    private ArrayList<Integer[]> freeBoxes;
-    private ArrayList<Integer[]> pacmanPositions;
     private PacmanController controller;
     private Pacman pacman;
-//    private Pacman pacman;
     /**
      * Constructeur de la classe Labyrinthe.
      */
-    public Labyrinthe(final InitialisationMatrice matrice, PacmanController controller, Pacman pacman) {
+    public Labyrinthe(
+            final InitialisationMatrice matrice,
+            final PacmanController controller,
+            final Pacman pacman
+            ) {
         this.matrice = matrice;
 
-        this.positionsSquares = new ArrayList<>();
-        this.freeBoxes = new ArrayList<>();
-        genererPositionsSquares(this.matrice.getMatrice());
-        this.pacmanPositions = new ArrayList<>();
-
         this.pacman = pacman;
-        this.controller =controller;
+        this.controller = controller;
 
         this.setContentPane(this.createPanel());
         this.setTitle("Pac Man");
@@ -71,10 +69,11 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
             @Override
             protected void paintComponent(final Graphics g) {
                 super.paintComponent(g);
+                ArrayList<Integer[]> positionsSquares = matrice.getPositionsSquares();
+
                 for (int ii = 0; ii < positionsSquares.size(); ii++) {
                     drawSquare(g, positionsSquares.get(ii)[0], positionsSquares.get(ii)[1]);
                 }
-
                 drawPacman(g, pacman.getPacmanX(), pacman.getPacmanY());
             }
         };
@@ -95,22 +94,6 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 JOptionPane.INFORMATION_MESSAGE);
     }
 
-    private void genererPositionsSquares(final ArrayList<ArrayList<Integer>> matrice) {
-        for (int ii = 0; ii < matrice.size(); ii++) {
-            for (int jj = 0; jj < matrice.get(ii).size(); jj++) {
-                Integer[] coordsCarres = {
-                    tailleCarre * jj,
-                    tailleCarre * ii
-                };
-                if (matrice.get(ii).get(jj) == 1) {
-                    this.positionsSquares.add(coordsCarres);
-                } else {
-                    this.freeBoxes.add(coordsCarres);
-                }
-            }
-        }
-    }
-
     private void drawSquare(final Graphics g, final int x, final int y) {
         int padding = 5;
         g.setColor(Color.blue);
@@ -121,7 +104,14 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     private void drawPacman(final Graphics g, final int x, final int y) {
         int padding = 5;
-        g.drawImage(pacman.getImagePacMan().getImage(), x * tailleCarre + padding, y * tailleCarre + padding, tailleCarre, tailleCarre, null);
+        g.drawImage(
+            pacman.getImagePacMan().getImage(),
+            x + padding,
+            y + padding,
+            tailleCarre,
+            tailleCarre,
+            null
+        );
     }
 
 
@@ -136,7 +126,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     @Override
     public final void keyPressed(final KeyEvent e) {
-        switch(e.getKeyCode()) {
+        switch (e.getKeyCode()) {
             case KeyEvent.VK_UP:
                 controller.handleMovement(Pacman.Direction.UP);
                 break;
@@ -151,6 +141,8 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 break;
             case KeyEvent.VK_ESCAPE:
                 controller.handlePause();
+                break;
+            default:
                 break;
         }
 

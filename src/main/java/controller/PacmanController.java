@@ -33,20 +33,26 @@ public class PacmanController {
      * @param direction
      */
 
-    public void handleMovement(Pacman.Direction direction) {
-        switch (direction) {
-            case UP:
-                model.setPacmanY(model.getPacmanY() - 1);
-                break;
-            case DOWN:
-                model.setPacmanY(model.getPacmanY() + 1);
-                break;
-            case LEFT:
-                model.setPacmanX(model.getPacmanX() - 1);
-                break;
-            case RIGHT:
-                model.setPacmanX(model.getPacmanX() + 1);
-                break;
+    public void handleMovement(final Pacman.Direction direction) {
+        if (model.checkPossibleDirections().contains(direction)) {
+            int speed = 10;
+            switch (direction) {
+                case UP:
+                    model.setPacmanY(model.getPacmanY() - speed);
+                    break;
+                case DOWN:
+                    model.setPacmanY(model.getPacmanY() + speed);
+                    break;
+                case LEFT:
+                    model.setPacmanX(model.getPacmanX() - speed);
+                    break;
+                case RIGHT:
+                    model.setPacmanX(model.getPacmanX() + speed);
+                    break;
+                default:
+                    break;
+            }
+            model.setDirection(direction);
         }
     }
 

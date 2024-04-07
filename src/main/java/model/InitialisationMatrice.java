@@ -12,13 +12,17 @@ public class InitialisationMatrice extends Observable {
 
     private ArrayList<ArrayList<Integer>> matrice = new ArrayList<>();
     private String path;
-
+    private ArrayList<Integer[]> positionsSquares;
+    private ArrayList<Integer[]> freeBoxes;
 
     /**
      * @param path
      */
     public InitialisationMatrice(final String path) {
         this.path = path;
+
+        this.positionsSquares = new ArrayList<>();
+        this.freeBoxes = new ArrayList<>();
     }
 
     /**
@@ -52,6 +56,8 @@ public class InitialisationMatrice extends Observable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        generatePositionsSquares();
 
         super.notifyObservers();
     }
@@ -87,16 +93,29 @@ public class InitialisationMatrice extends Observable {
         return matrice;
     }
 
-    public ArrayList<Integer[]> getFreeBoxes() {
-        ArrayList<Integer[]> freeBoxes = new ArrayList<>();
-        for (int y = 0; y < matrice.size(); y ++) {
-            for (int x = 0; x < matrice.get(y).size(); x++) {
-                if (matrice.get(y).get(x) == 0) {
-                    freeBoxes.add(new Integer[]{x, y});
+    private void generatePositionsSquares() {
+        int squareSize = 50;
+        for (int ii = 0; ii < matrice.size(); ii++) {
+            for (int jj = 0; jj < matrice.get(ii).size(); jj++) {
+                Integer[] coordsCarres = {
+                    squareSize * jj,
+                    squareSize * ii
+                };
+                if (matrice.get(ii).get(jj) == 1) {
+                    this.positionsSquares.add(coordsCarres);
+                } else {
+                    this.freeBoxes.add(coordsCarres);
                 }
             }
         }
-        return freeBoxes;
+    }
+
+    public ArrayList<Integer[]> getFreeBoxes() {
+        return this.freeBoxes;
+    }
+
+    public ArrayList<Integer[]> getPositionsSquares() {
+        return this.positionsSquares;
     }
 
 
