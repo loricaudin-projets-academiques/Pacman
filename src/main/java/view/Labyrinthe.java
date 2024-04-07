@@ -1,6 +1,9 @@
 package view;
 import java.awt.Color;
 import java.awt.Graphics;
+import controller.PacmanController;
+import model.Pacman;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -22,6 +25,8 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     private ArrayList<Integer[]> positionsSquares;
     private ArrayList<Integer[]> freeBoxes;
 
+    private PacmanController controller;
+//    private Pacman pacman;
     /**
      * Constructeur de la classe Labyrinthe.
      */
@@ -31,6 +36,9 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         this.positionsSquares = new ArrayList<>();
         this.freeBoxes = new ArrayList<>();
         genererPositionsSquares(this.matrice.getMatrice());
+
+        this.controller = controller;
+        this.pacman = pacman;
 
         this.setContentPane(this.createPanel());
         this.setTitle("Pac Man");
@@ -66,7 +74,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 super.paintComponent(g);
                 for (int ii = 0; ii < positionsSquares.size(); ii++) {
                     drawSquare(g, positionsSquares.get(ii)[0], positionsSquares.get(ii)[1]);
-                }                
+                }
             }
         };
         myPanel.setBackground(Color.black);
@@ -76,7 +84,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         myPanel.add(pacman);
 
         this.addKeyListener(this);
-        
+
         return myPanel;
     }
 
@@ -119,16 +127,22 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     @Override
     public final void keyPressed(final KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-            menuPause();
-        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            pacman.setDirection(Pacman.Direction.LEFT);
-        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            pacman.setDirection(Pacman.Direction.RIGHT);
-        } else if (e.getKeyCode() == KeyEvent.VK_UP) {
-            pacman.setDirection(Pacman.Direction.UP);
-        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            pacman.setDirection(Pacman.Direction.DOWN);
+        switch(e.getKeyCode()) {
+            case KeyEvent.VK_UP:
+                controller.handleMovement(Pacman.Direction.UP);
+                break;
+            case KeyEvent.VK_DOWN:
+                controller.handleMovement(Pacman.Direction.DOWN);
+                break;
+            case KeyEvent.VK_LEFT:
+                controller.handleMovement(Pacman.Direction.LEFT);
+                break;
+            case KeyEvent.VK_RIGHT:
+                controller.handleMovement(Pacman.Direction.RIGHT);
+                break;
+            case KeyEvent.VK_ESCAPE:
+                controller.handlePause();
+                break;
         }
     }
 
@@ -145,6 +159,6 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     @Override
     public void update() {
         // TODO Auto-generated method stub
-        
+
     }
 }
