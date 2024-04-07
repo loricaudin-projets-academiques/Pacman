@@ -72,7 +72,7 @@ public class LevelsWindow extends JDialog implements ActionListener {
      */
     private JPanel createPanel() {
         panel = (JPanel) getContentPane();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); //Aligner verticalement les widgets
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); // Aligner verticalement les widgets
         panel.setAlignmentX(JPanel.CENTER_ALIGNMENT); // Centrer horizontalement
 
         panel.add(Box.createRigidArea(new Dimension(0, 10))); // Ajouter un espacement
@@ -89,8 +89,10 @@ public class LevelsWindow extends JDialog implements ActionListener {
         panelComboBox.setBackground(Color.BLACK);
 
         comboxBoxLevels = new JComboBox<String>();
-        comboxBoxLevels.addItem("Niveau 1");
-        // comboxBoxLevels.addItem("Niveau 2");
+        int nbFile = countFile();
+        for (int i = 0; i<nbFile; i++){
+            comboxBoxLevels.addItem("Niveau " + (i+1));
+        }
 
         comboxBoxLevels.setBackground(Color.BLACK);
         comboxBoxLevels.setForeground(
@@ -140,14 +142,32 @@ public class LevelsWindow extends JDialog implements ActionListener {
         if (source == buttonStart) {
             int level = 0;
             String selectedLevel = (String) comboxBoxLevels.getSelectedItem();
-            if (selectedLevel.equals("Niveau 1")) {
-                level = 1;
+            int nbLevels = countFile();
+            for (int i = 0; i<nbLevels; i++){
+                if(selectedLevel.equals("Niveau " + (i+1))){
+                    level = i+1;
+                    break;
+                }
             }
+            
             modalWindow.dispose();
             StartController controller = new StartController(level);
             controller.control();
         } else {
             this.dispose();
+        }
+    }
+
+    public Integer countFile() {
+        String cheminDossier = "src/main/ressources/maps";
+        File dossier = new File(cheminDossier);
+        if (dossier.isDirectory()) {
+            File[] fichiers = dossier.listFiles();
+            int nombreDeFichiers = fichiers.length;
+            return nombreDeFichiers;
+        } else {
+            System.out.println("Le chemin spécifié ne correspond pas à un dossier existant.");
+            return 0;
         }
     }
 }

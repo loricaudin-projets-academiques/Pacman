@@ -1,4 +1,5 @@
 package view;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -11,8 +12,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import model.InitialisationMatrice;
+
 /**
  * Crée la fenetre principal.
+ * 
  * @return Le fenetre principal. créé, avec le labyrinthe chargé.
  */
 public class Labyrinthe extends JFrame implements KeyListener, Observer {
@@ -29,9 +32,8 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         this.setContentPane(this.createPanel());
         this.setTitle("Pac Man");
         this.setSize(
-            tailleCarre * matrice.getMatrice().size() + 25,
-            tailleCarre * matrice.getMatrice().get(0).size() + 50
-        );
+                tailleCarre * matrice.getMatrice().get(0).size() + 25,
+                tailleCarre * matrice.getMatrice().size() + 50);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -45,11 +47,12 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     }
 
     // private void setMyPanel(final JPanel myPanel) {
-    //     this.myPanel = myPanel;
+    // this.myPanel = myPanel;
     // }
 
     /**
      * Création d'un JPanel.
+     * 
      * @return JPanel
      */
     private JPanel createPanel() {
@@ -61,19 +64,18 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 positionsSquares = genererPositionsSquares(matrice.getMatrice());
                 for (int ii = 0; ii < positionsSquares.size(); ii++) {
                     drawSquare(g, positionsSquares.get(ii)[0], positionsSquares.get(ii)[1]);
-                }                
+                }
             }
         };
         myPanel.setBackground(Color.black);
         this.addKeyListener(this);
-        
+
         return myPanel;
     }
 
-    
-/**
- * Affiche une boîte de dialogue pour mettre en pause la fenêtre.
- */
+    /**
+     * Affiche une boîte de dialogue pour mettre en pause la fenêtre.
+     */
     private void menuPause() {
         JOptionPane.showMessageDialog(this,
                 "Fenêtre en pause", "Pause",
@@ -81,16 +83,15 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     }
 
     private ArrayList<Integer[]> genererPositionsSquares(
-            final ArrayList<ArrayList<Integer>> matrice
-        ) {
+            final ArrayList<ArrayList<Integer>> matrice) {
         ArrayList<Integer[]> listeCoordsSquares = new ArrayList<Integer[]>();
         int padding = 5;
         for (int ii = 0; ii < matrice.size(); ii++) {
             for (int jj = 0; jj < matrice.get(ii).size(); jj++) {
                 if (matrice.get(ii).get(jj) == 1) {
                     Integer[] coordsCarres = {
-                        tailleCarre * jj + padding,
-                        tailleCarre * ii + padding
+                            tailleCarre * jj + padding,
+                            tailleCarre * ii + padding
                     };
                     listeCoordsSquares.add(coordsCarres);
                 }
@@ -103,6 +104,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         g.setColor(Color.blue);
         g.fillRect(x, y, tailleCarre, tailleCarre);
     }
+
     /**
      * classe pour créer le boutton.
      */
@@ -119,17 +121,17 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     @Override
     public final void keyReleased(final KeyEvent e) {
-        
+
     }
 
     @Override
     public void keyTyped(final KeyEvent e) {
-        
+
     }
 
     @Override
     public void update() {
         // TODO Auto-generated method stub
-        
+
     }
 }
