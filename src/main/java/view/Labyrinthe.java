@@ -20,12 +20,17 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     private InitialisationMatrice matrice;
     private ArrayList<Integer[]> positionsSquares;
+    private ArrayList<Integer[]> freeBoxes;
 
     /**
      * Constructeur de la classe Labyrinthe.
      */
     public Labyrinthe(final InitialisationMatrice matrice) {
         this.matrice = matrice;
+
+        this.positionsSquares = new ArrayList<>();
+        this.freeBoxes = new ArrayList<>();
+        genererPositionsSquares(this.matrice.getMatrice());
 
         this.setContentPane(this.createPanel());
         this.setTitle("Pac Man");
@@ -40,6 +45,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     private JPanel myPanel;
     private int tailleCarre = 50;
+    private Pacman pacman;
 
     public JPanel getMyPanel() {
         return this.myPanel;
@@ -58,19 +64,18 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
             @Override
             protected void paintComponent(final Graphics g) {
                 super.paintComponent(g);
-
-                positionsSquares = genererPositionsSquares(matrice.getMatrice());
                 for (int ii = 0; ii < positionsSquares.size(); ii++) {
                     drawSquare(g, positionsSquares.get(ii)[0], positionsSquares.get(ii)[1]);
                 }                
             }
         };
         myPanel.setBackground(Color.black);
-        this.addKeyListener(this);
         myPanel.setLayout(null);
 
-        Pacman pacman = new Pacman(50, 50);
+        pacman = new Pacman(freeBoxes);
         myPanel.add(pacman);
+
+        this.addKeyListener(this);
 
         return myPanel;
     }
@@ -85,28 +90,26 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 JOptionPane.INFORMATION_MESSAGE);
     }
 
-    private ArrayList<Integer[]> genererPositionsSquares(
-            final ArrayList<ArrayList<Integer>> matrice
-        ) {
-        ArrayList<Integer[]> listeCoordsSquares = new ArrayList<Integer[]>();
-        int padding = 5;
+    private void genererPositionsSquares(final ArrayList<ArrayList<Integer>> matrice) {
         for (int ii = 0; ii < matrice.size(); ii++) {
             for (int jj = 0; jj < matrice.get(ii).size(); jj++) {
+                Integer[] coordsCarres = {
+                    tailleCarre * jj,
+                    tailleCarre * ii
+                };
                 if (matrice.get(ii).get(jj) == 1) {
-                    Integer[] coordsCarres = {
-                        tailleCarre * jj + padding,
-                        tailleCarre * ii + padding
-                    };
-                    listeCoordsSquares.add(coordsCarres);
+                    this.positionsSquares.add(coordsCarres);
+                } else {
+                    this.freeBoxes.add(coordsCarres);
                 }
             }
         }
-        return listeCoordsSquares;
     }
 
     private void drawSquare(final Graphics g, final int x, final int y) {
+        int padding = 5;
         g.setColor(Color.blue);
-        g.fillRect(x, y, tailleCarre, tailleCarre);
+        g.fillRect(x + padding, y + padding, tailleCarre, tailleCarre);
     }
     /**
      * classe pour créer le boutton.
@@ -119,6 +122,14 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     public final void keyPressed(final KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             menuPause();
+        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            pacman.setDirection(Pacman.Direction.LEFT);
+        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            pacman.setDirection(Pacman.Direction.RIGHT);
+        } else if (e.getKeyCode() == KeyEvent.VK_UP) {
+            pacman.setDirection(Pacman.Direction.UP);
+        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            pacman.setDirection(Pacman.Direction.DOWN);
         }
     }
 
