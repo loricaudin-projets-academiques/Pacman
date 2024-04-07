@@ -86,4 +86,18 @@ public class InitialisationMatrice extends Observable {
     public ArrayList<ArrayList<Integer>> getMatrice() {
         return matrice;
     }
+
+    public ArrayList<Integer[]> getFreeBoxes() {
+        ArrayList<Integer[]> freeBoxes = new ArrayList<>();
+        for (int y = 0; y < matrice.size(); y ++) {
+            for (int x = 0; x < matrice.get(y).size(); x++) {
+                if (matrice.get(y).get(x) == 0) {
+                    freeBoxes.add(new Integer[]{x, y});
+                }
+            }
+        }
+        return freeBoxes;
+    }
+
+
 }
