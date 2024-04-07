@@ -85,20 +85,19 @@ public class Pacman extends JLabel {
      * de la direction.
      */
     public void move() {
+        int afstand = 50;
         switch (direction) {
             case UP:
-                pacmanY--;
+                pacmanY -= afstand;
                 break;
             case DOWN:
-                pacmanY++;
+                pacmanY += afstand;
                 break;
             case LEFT:
-                pacmanX--;
+                pacmanX -= afstand;
                 break;
             case RIGHT:
-                pacmanX++;
-                break;
-            default:
+                pacmanX += afstand;
                 break;
         }
         updatePosition();
