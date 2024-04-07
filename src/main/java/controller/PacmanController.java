@@ -34,8 +34,19 @@ public class PacmanController {
      */
 
     public void handleMovement(Pacman.Direction direction) {
-        if (!isPaused) {
-            model.setDirection(direction);
+        switch (direction) {
+            case UP:
+                model.setPacmanY(model.getPacmanY() - 1);
+                break;
+            case DOWN:
+                model.setPacmanY(model.getPacmanY() + 1);
+                break;
+            case LEFT:
+                model.setPacmanX(model.getPacmanX() - 1);
+                break;
+            case RIGHT:
+                model.setPacmanX(model.getPacmanX() + 1);
+                break;
         }
     }
 
