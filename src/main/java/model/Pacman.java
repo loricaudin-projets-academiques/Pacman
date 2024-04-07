@@ -72,6 +72,14 @@ public class Pacman extends JLabel {
         return pacmanY;
     }
 
+    public void setPacmanX(int pacmanX) {
+        this.pacmanX = pacmanX;
+    }
+
+    public void setPacmanY(int pacmanY) {
+        this.pacmanY = pacmanY;
+    }
+
     /**
      * 
      */
