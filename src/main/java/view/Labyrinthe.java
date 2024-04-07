@@ -22,16 +22,14 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     private InitialisationMatrice matrice;
     private ArrayList<Integer[]> positionsSquares;
     private ArrayList<Integer[]> freeBoxes;
-
     private ArrayList<Integer[]> pacmanPositions;
-
     private PacmanController controller;
     private Pacman pacman;
 //    private Pacman pacman;
     /**
      * Constructeur de la classe Labyrinthe.
      */
-    public Labyrinthe(final InitialisationMatrice matrice) {
+    public Labyrinthe(final InitialisationMatrice matrice, PacmanController controller, Pacman pacman) {
         this.matrice = matrice;
 
         this.positionsSquares = new ArrayList<>();
@@ -39,8 +37,8 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         genererPositionsSquares(this.matrice.getMatrice());
         this.pacmanPositions = new ArrayList<>();
 
-        this.pacman = new Pacman(freeBoxes);
-        this.controller = new PacmanController(pacman);
+        this.pacman = pacman;
+        this.controller =controller;
 
         this.setContentPane(this.createPanel());
         this.setTitle("Pac Man");
@@ -83,8 +81,6 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         myPanel.setBackground(Color.black);
         myPanel.setLayout(null);
 
-        myPanel.add(pacman);
-
         this.addKeyListener(this);
 
         return myPanel;
@@ -125,7 +121,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     private void drawPacman(final Graphics g, final int x, final int y) {
         int padding = 5;
-        g.drawImage(pacman.getImagePacMan().getImage(), x + padding, y + padding, tailleCarre, tailleCarre, null);
+        g.drawImage(pacman.getImagePacMan().getImage(), x * tailleCarre + padding, y * tailleCarre + padding, tailleCarre, tailleCarre, null);
     }
 
 
