@@ -18,8 +18,10 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import model.InitialisationMatrice;
+
 /**
  * Crée la fenetre principal.
+ * 
  * @return Le fenetre principal. créé, avec le labyrinthe chargé.
  */
 public class Labyrinthe extends JFrame implements KeyListener, Observer {
@@ -29,14 +31,14 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     private Pacman pacman;
 
     private Timer timer;
+
     /**
      * Constructeur de la classe Labyrinthe.
      */
     public Labyrinthe(
             final InitialisationMatrice matrice,
             final PacmanController controller,
-            final Pacman pacman
-            ) {
+            final Pacman pacman) {
         this.matrice = matrice;
 
         this.pacman = pacman;
@@ -57,6 +59,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     private JPanel myPanel;
     private int tailleCarre = 50;
+    private int sizeCircle = 10;
 
     public JPanel getMyPanel() {
         return this.myPanel;
@@ -77,9 +80,14 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
             protected void paintComponent(final Graphics g) {
                 super.paintComponent(g);
                 ArrayList<Integer[]> positionsSquares = matrice.getPositionsSquares();
+                ArrayList<Integer[]> positionsFoods = matrice.getFreeBoxes();
 
                 for (int ii = 0; ii < positionsSquares.size(); ii++) {
                     drawSquare(g, positionsSquares.get(ii)[0], positionsSquares.get(ii)[1]);
+                }
+
+                for (int ii = 0; ii < positionsFoods.size(); ii++) {
+                    drawCircle(g, positionsFoods.get(ii)[0], positionsFoods.get(ii)[1]);
                 }
                 drawPacman(g, pacman.getCharacterX(), pacman.getCharacterY());
             }
@@ -107,22 +115,22 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         g.fillRect(x + padding, y + padding, tailleCarre, tailleCarre);
     }
 
-
+    private void drawCircle(final Graphics g, final int x, final int y) {
+        int padding = tailleCarre / 2;
+        g.setColor(Color.YELLOW);
+        g.fillOval(x + padding, y + padding, sizeCircle, sizeCircle);
+    }
 
     private void drawPacman(final Graphics g, final int x, final int y) {
         int padding = 5;
         g.drawImage(
-            pacman.getImageIcon().getImage(),
-            x + padding,
-            y + padding,
-            tailleCarre,
-            tailleCarre,
-            null
-        );
+                pacman.getImageIcon().getImage(),
+                x + padding,
+                y + padding,
+                tailleCarre,
+                tailleCarre,
+                null);
     }
-
-
-
 
     /**
      * classe pour créer le boutton.
@@ -158,12 +166,12 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     @Override
     public final void keyReleased(final KeyEvent e) {
-        
+
     }
 
     @Override
     public void keyTyped(final KeyEvent e) {
-        
+
     }
 
     @Override
