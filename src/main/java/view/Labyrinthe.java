@@ -74,7 +74,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 for (int ii = 0; ii < positionsSquares.size(); ii++) {
                     drawSquare(g, positionsSquares.get(ii)[0], positionsSquares.get(ii)[1]);
                 }
-                drawPacman(g, pacman.getPacmanX(), pacman.getPacmanY());
+                drawPacman(g, pacman.getCharacterX(), pacman.getCharacterY());
             }
         };
         myPanel.setBackground(Color.black);
@@ -105,7 +105,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     private void drawPacman(final Graphics g, final int x, final int y) {
         int padding = 5;
         g.drawImage(
-            pacman.getImagePacMan().getImage(),
+            pacman.getImageIcon("src/main/ressources/pacman.png").getImage(),
             x + padding,
             y + padding,
             tailleCarre,
