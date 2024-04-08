@@ -10,6 +10,7 @@ import java.io.File;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -36,6 +37,7 @@ public class LevelsWindow extends JDialog implements ActionListener {
      */
     public LevelsWindow(final JFrame modalWindow) {
         super(modalWindow, "Pacman - Choix du niveau");
+        this.setIconImage(new ImageIcon("src/main/ressources/pacman/pacman.png").getImage());
 
         this.modalWindow = modalWindow;
 

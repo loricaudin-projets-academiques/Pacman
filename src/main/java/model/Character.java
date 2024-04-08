@@ -15,12 +15,12 @@ public class Character extends JLabel {
         UP, DOWN, LEFT, RIGHT
     }
 
-    private Direction direction;
-    private int characterX;
-    private int characterY;
-    private ArrayList<Integer[]> freeBoxes;
+    protected Direction direction;
+    protected int characterX;
+    protected int characterY;
+    protected ArrayList<Integer[]> freeBoxes;
 
-    private String filename;
+    protected String filename;
 
     /**
      * Constructeur pour la classe Pacman.

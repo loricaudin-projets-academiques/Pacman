@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -53,6 +54,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
         this.setContentPane(this.createPanel());
         this.setTitle("Pac Man");
+        this.setIconImage(new ImageIcon("src/main/ressources/pacman/pacman.png").getImage());
         this.setSize(
                 tailleCarre * matrice.getMatrice().get(0).size() + 25,
                 tailleCarre * matrice.getMatrice().size() + 50);

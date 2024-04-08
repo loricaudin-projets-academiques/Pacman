@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -29,7 +30,7 @@ public class HomeWindow extends JFrame implements ActionListener {
      */
     public HomeWindow() {
         this.setTitle("Pac Man");
-        // this.setIconImage(new ImageIcon("src/icone.png").getImage());
+        this.setIconImage(new ImageIcon("src/main/ressources/pacman/pacman.png").getImage());
 
         this.setSize(700, 500);
         this.setResizable(false);
