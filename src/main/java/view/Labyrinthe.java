@@ -19,6 +19,7 @@ import javax.swing.Timer;
 
 import model.InitialisationMatrice;
 import model.Monster;
+import model.Character;
 /**
  * Crée la fenetre principal.
  * @return Le fenetre principal. créé, avec le labyrinthe chargé.
@@ -85,7 +86,10 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 for (int ii = 0; ii < positionsSquares.size(); ii++) {
                     drawSquare(g, positionsSquares.get(ii)[0], positionsSquares.get(ii)[1]);
                 }
-                drawPacman(g, pacman.getCharacterX(), pacman.getCharacterY());
+                drawCharacter(g, pacman);
+                for (int ii = 0; ii < listMonsters.size(); ii++) {
+                    drawCharacter(g, listMonsters.get(ii));
+                }
             }
         };
         myPanel.setBackground(Color.black);
@@ -111,14 +115,12 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         g.fillRect(x + padding, y + padding, tailleCarre, tailleCarre);
     }
 
-
-
-    private void drawPacman(final Graphics g, final int x, final int y) {
+    private void drawCharacter(final Graphics g, Character character) {
         int padding = 5;
         g.drawImage(
-            pacman.getImageIcon().getImage(),
-            x + padding,
-            y + padding,
+            character.getImageIcon().getImage(),
+            character.getCharacterX() + padding,
+            character.getCharacterY() + padding,
             tailleCarre,
             tailleCarre,
             null
