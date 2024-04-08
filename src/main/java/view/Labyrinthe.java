@@ -1,6 +1,7 @@
 package view;
 
 import controller.PacmanController;
+import controller.ScoreController;
 import model.Pacman;
 
 import java.awt.Graphics;
@@ -18,8 +19,10 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import model.InitialisationMatrice;
+
 /**
  * Crée la fenetre principal.
+ * 
  * @return Le fenetre principal. créé, avec le labyrinthe chargé.
  */
 public class Labyrinthe extends JFrame implements KeyListener, Observer {
@@ -29,14 +32,17 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     private Pacman pacman;
 
     private Timer timer;
+    private ArrayList<Integer[]> positionsFoods = new ArrayList<>();
+    private ArrayList<Integer[]> positionsFreeBoxes;
+    private ScoreController scoreController;
+
     /**
      * Constructeur de la classe Labyrinthe.
      */
     public Labyrinthe(
             final InitialisationMatrice matrice,
             final PacmanController controller,
-            final Pacman pacman
-            ) {
+            final Pacman pacman) {
         this.matrice = matrice;
 
         this.pacman = pacman;
@@ -53,10 +59,23 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.positionsFreeBoxes = matrice.getFreeBoxes();
+
+        for (int ii = 0; ii < positionsFreeBoxes.size(); ii++) {
+            Integer[] posTmp = {
+                    positionsFreeBoxes.get(ii)[0],
+                    positionsFreeBoxes.get(ii)[1]
+            };
+
+            this.positionsFoods.add(posTmp);
+        }
+        this.scoreController = new ScoreController();
     }
 
     private JPanel myPanel;
     private int tailleCarre = 50;
+    private int sizeCircle = 10;
+    // private ArrayList<Integer[]> positionsFoods = matrice.getFreeBoxes();
 
     public JPanel getMyPanel() {
         return this.myPanel;
@@ -81,6 +100,14 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 for (int ii = 0; ii < positionsSquares.size(); ii++) {
                     drawSquare(g, positionsSquares.get(ii)[0], positionsSquares.get(ii)[1]);
                 }
+
+                for (int ii = 0; ii < positionsFreeBoxes.size(); ii++) {
+                    if (positionsFreeBoxes.get(ii)[0] == positionsFoods.get(ii)[0]
+                            && positionsFreeBoxes.get(ii)[1] == positionsFoods.get(ii)[1]) {
+                        drawCircle(g, positionsFreeBoxes.get(ii)[0], positionsFreeBoxes.get(ii)[1]);
+                    }
+                }
+
                 drawPacman(g, pacman.getCharacterX(), pacman.getCharacterY());
             }
         };
@@ -107,22 +134,22 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         g.fillRect(x + padding, y + padding, tailleCarre, tailleCarre);
     }
 
-
+    private void drawCircle(final Graphics g, final int x, final int y) {
+        int padding = tailleCarre / 2;
+        g.setColor(Color.YELLOW);
+        g.fillOval(x + padding, y + padding, sizeCircle, sizeCircle);
+    }
 
     private void drawPacman(final Graphics g, final int x, final int y) {
         int padding = 5;
         g.drawImage(
-            pacman.getImageIcon().getImage(),
-            x + padding,
-            y + padding,
-            tailleCarre,
-            tailleCarre,
-            null
-        );
+                pacman.getImageIcon().getImage(),
+                x + padding,
+                y + padding,
+                tailleCarre,
+                tailleCarre,
+                null);
     }
-
-
-
 
     /**
      * classe pour créer le boutton.
@@ -165,12 +192,12 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     @Override
     public final void keyReleased(final KeyEvent e) {
-        
+
     }
 
     @Override
     public void keyTyped(final KeyEvent e) {
-        
+
     }
 
     @Override
@@ -181,6 +208,22 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     private void movePacman() {
         controller.handleMovement(pacman.getDirection());
+        int pacmanX = pacman.getCharacterX();
+        int pacmanY = pacman.getCharacterY();
+        boolean notFound = true;
+        for (int i = 0; i < positionsFoods.size(); i++) {
+            if (positionsFoods.get(i)[0] == pacmanX && positionsFoods.get(i)[1] == pacmanY && notFound) {
+                positionsFoods.get(i)[0] = 0;
+                positionsFoods.get(i)[1] = 0;
+                notFound = false;
+                this.scoreController.setCount(1);
+                if (scoreController.control(positionsFreeBoxes.size())) {
+                    this.dispose();
+                    EndWindow endWindow = new EndWindow(true);
+                    endWindow.setVisible(true);
+                }
+            }
+        }
         myPanel.repaint();
     }
 }
