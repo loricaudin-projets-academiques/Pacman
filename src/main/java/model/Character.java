@@ -20,13 +20,15 @@ public class Character extends JLabel {
     private int characterY;
     private ArrayList<Integer[]> freeBoxes;
 
+    private String filename;
+
     /**
      * Constructeur pour la classe Pacman.
      * @param freeBoxes
      */
-    public Character(final ArrayList<Integer[]> freeBoxes) {
+    public Character(final ArrayList<Integer[]> freeBoxes, String filename) {
         super("");
-        
+        this.filename = filename;
 
         this.freeBoxes = freeBoxes;
 
@@ -43,8 +45,8 @@ public class Character extends JLabel {
         updatePosition();
     }
 
-    public ImageIcon getImageIcon(String filename) {
-        ImageIcon imageCharacter = new ImageIcon(filename);
+    public ImageIcon getImageIcon() {
+        ImageIcon imageCharacter = new ImageIcon(this.filename);
         Image imageCharacterEdit = imageCharacter.getImage();
         imageCharacterEdit = imageCharacterEdit.getScaledInstance(
             50,
@@ -79,6 +81,10 @@ public class Character extends JLabel {
      */
     public void setCharacterY(final int characterY) {
         this.characterY = characterY;
+    }
+
+    public Direction getDirection() {
+        return direction;
     }
 
     /**

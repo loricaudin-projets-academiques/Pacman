@@ -12,8 +12,8 @@ public class Pacman extends Character {
      * @param freeBoxes
      */
     public Pacman(final ArrayList<Integer[]> freeBoxes) {
-        super(freeBoxes);
+        super(freeBoxes, "src/main/ressources/pacman.png");
 
-        this.setIcon(getImageIcon("src/main/ressources/pacman.png"));
+        this.setIcon(getImageIcon());
     }
 }

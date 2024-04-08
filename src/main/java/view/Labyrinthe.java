@@ -15,6 +15,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import javax.swing.Timer;
+
 import model.InitialisationMatrice;
 /**
  * Crée la fenetre principal.
@@ -25,6 +27,8 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     private InitialisationMatrice matrice;
     private PacmanController controller;
     private Pacman pacman;
+
+    private Timer timer;
     /**
      * Constructeur de la classe Labyrinthe.
      */
@@ -37,6 +41,9 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
         this.pacman = pacman;
         this.controller = controller;
+
+        this.timer = new Timer(100, e -> movePacman());
+        this.timer.start();
 
         this.setContentPane(this.createPanel());
         this.setTitle("Pac Man");
@@ -105,7 +112,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     private void drawPacman(final Graphics g, final int x, final int y) {
         int padding = 5;
         g.drawImage(
-            pacman.getImageIcon("src/main/ressources/pacman.png").getImage(),
+            pacman.getImageIcon().getImage(),
             x + padding,
             y + padding,
             tailleCarre,
@@ -163,5 +170,10 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     public void update() {
         // TODO Auto-generated method stub
 
+    }
+
+    private void movePacman() {
+        controller.handleMovement(pacman.getDirection());
+        myPanel.repaint();
     }
 }
