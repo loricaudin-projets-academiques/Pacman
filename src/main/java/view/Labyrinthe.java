@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import model.InitialisationMatrice;
+import model.Monster;
 /**
  * Crée la fenetre principal.
  * @return Le fenetre principal. créé, avec le labyrinthe chargé.
@@ -27,6 +28,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     private InitialisationMatrice matrice;
     private PacmanController controller;
     private Pacman pacman;
+    private ArrayList<Monster> listMonsters;
 
     private Timer timer;
     /**
@@ -35,11 +37,13 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     public Labyrinthe(
             final InitialisationMatrice matrice,
             final PacmanController controller,
-            final Pacman pacman
+            final Pacman pacman,
+            final ArrayList<Monster> listMonsters
             ) {
         this.matrice = matrice;
 
         this.pacman = pacman;
+        this.listMonsters = listMonsters;
         this.controller = controller;
 
         this.timer = new Timer(100, e -> movePacman());
