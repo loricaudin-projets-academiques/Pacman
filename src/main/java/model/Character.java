@@ -137,19 +137,19 @@ public class Character extends JLabel {
             for (int ii = 0; ii < this.freeBoxes.size(); ii++) {
                 Integer[] zone = this.freeBoxes.get(ii);
                 // Vérifier si on peut aller en haut
-                if (characterX == zone[0] && characterY - 50 == zone[1] && direction != Direction.DOWN) {
+                if (characterX == zone[0] && characterY - 50 == zone[1]) {
                     listDirections.add(Direction.UP);
                 }
                 // Vérifier si on peut aller en bas
-                if (characterX == zone[0] && characterY + 50 == zone[1] && direction != Direction.UP) {
+                if (characterX == zone[0] && characterY + 50 == zone[1]) {
                     listDirections.add(Direction.DOWN);
                 }
                 // Vérifier si on peut aller à gauche
-                if (characterX - 50 == zone[0] && characterY == zone[1] && direction != Direction.RIGHT) {
+                if (characterX - 50 == zone[0] && characterY == zone[1]) {
                     listDirections.add(Direction.LEFT);
                 }
                 // Vérifier si on peut aller à droite
-                if (characterX + 50 == zone[0] && characterY == zone[1] && direction != Direction.LEFT) {
+                if (characterX + 50 == zone[0] && characterY == zone[1]) {
                     listDirections.add(Direction.RIGHT);
                 }
             }
