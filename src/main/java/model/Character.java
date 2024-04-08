@@ -155,6 +155,21 @@ public class Character extends JLabel {
             }
         } else {
             listDirections.add(this.direction);
+            if (this.direction == Direction.DOWN) {
+                listDirections.add(Direction.UP);
+            }
+            // Vérifier si on peut aller en bas
+            if (this.direction == Direction.UP) {
+                listDirections.add(Direction.DOWN);
+            }
+            // Vérifier si on peut aller à gauche
+            if (this.direction == Direction.RIGHT) {
+                listDirections.add(Direction.LEFT);
+            }
+            // Vérifier si on peut aller à droite
+            if (this.direction == Direction.LEFT) {
+                listDirections.add(Direction.RIGHT);
+            }
         }
 
         return listDirections;

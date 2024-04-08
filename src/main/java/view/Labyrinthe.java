@@ -157,7 +157,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         if (pacman.getDirection() == pressedDirection) {
             return;
         } else {
-            controller.handleMovement(pressedDirection);
+            controller.handleDirection(pressedDirection);
         }
 
         myPanel.repaint();
