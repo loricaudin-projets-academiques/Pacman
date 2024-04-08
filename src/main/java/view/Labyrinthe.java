@@ -210,9 +210,10 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 positionsFoods.get(i)[1] = 0;
                 notFound = false;
                 this.scoreController.setCount(1);
-                if (scoreController.control(positionsFreeBoxes.size())){
-                    System.out.println("Bravo !! C'est gangé ! ");
+                if (scoreController.control(positionsFreeBoxes.size())) {
                     this.dispose();
+                    EndWindow endWindow = new EndWindow(true);
+                    endWindow.setVisible(true);
                 }
             }
         }
