@@ -133,24 +133,31 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     @Override
     public final void keyPressed(final KeyEvent e) {
+        Pacman.Direction pressedDirection = null;
         switch (e.getKeyCode()) {
             case KeyEvent.VK_UP:
-                controller.handleMovement(Pacman.Direction.UP);
+                pressedDirection = Pacman.Direction.UP;
                 break;
             case KeyEvent.VK_DOWN:
-                controller.handleMovement(Pacman.Direction.DOWN);
+                pressedDirection = Pacman.Direction.DOWN;
                 break;
             case KeyEvent.VK_LEFT:
-                controller.handleMovement(Pacman.Direction.LEFT);
+                pressedDirection = Pacman.Direction.LEFT;
                 break;
             case KeyEvent.VK_RIGHT:
-                controller.handleMovement(Pacman.Direction.RIGHT);
+                pressedDirection = Pacman.Direction.RIGHT;
                 break;
             case KeyEvent.VK_ESCAPE:
                 controller.handlePause();
                 break;
             default:
-                break;
+                return;
+        }
+
+        if (pacman.getDirection() == pressedDirection) {
+            return;
+        } else {
+            controller.handleMovement(pressedDirection);
         }
 
         myPanel.repaint();
