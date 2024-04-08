@@ -88,6 +88,10 @@ public class Pacman extends JLabel {
         this.pacmanY = pacmanY;
     }
 
+    public Direction getDirection() {
+        return direction;
+    }
+
     /**
      * 
      */
