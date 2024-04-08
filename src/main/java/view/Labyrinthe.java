@@ -42,6 +42,9 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         this.pacman = pacman;
         this.controller = controller;
 
+        this.timer = new Timer(100, e -> movePacman());
+        this.timer.start();
+
         this.setContentPane(this.createPanel());
         this.setTitle("Pac Man");
         this.setSize(
