@@ -59,7 +59,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         this.listMonsters = listMonsters;
         this.controller = controller;
 
-        this.timer = new Timer(100, e -> movePacman());
+        this.timer = new Timer(100, e -> moveCharacters());
         this.timer.start();
 
         this.setContentPane(this.createPanel());
@@ -124,8 +124,9 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 drawPacman(g, pacman.getCharacterX(), pacman.getCharacterY());
 
                 drawCharacter(g, pacman);
-                for (int ii = 0; ii < listMonsters.size(); ii++) {
-                    drawCharacter(g, listMonsters.get(ii));
+
+                for (Monster monster : listMonsters) {
+                    drawCharacter(g, monster);
                 }
 
             }
@@ -239,7 +240,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     }
 
-    private void movePacman() {
+    private void moveCharacters() {
         controller.handleMovement(pacman.getDirection());
         int pacmanX = pacman.getCharacterX();
         int pacmanY = pacman.getCharacterY();
@@ -260,6 +261,13 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 }
             }
         }
+
+        for (Monster monster : listMonsters) {
+            monster.move();
+        }
+
         myPanel.repaint();
     }
+
+
 }
