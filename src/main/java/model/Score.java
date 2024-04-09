@@ -17,7 +17,6 @@ public class Score {
 
     /**
      * 
-     * @param nbPoint
      * @return Boolean
      */
     public boolean control() {
@@ -51,7 +50,7 @@ public class Score {
      * 
      * @param scoreTotal
      */
-    public void setScoreTotal(Integer scoreTotal) {
+    public void setScoreTotal(final Integer scoreTotal) {
         this.scoreTotal = scoreTotal;
     }
 }
