@@ -7,6 +7,9 @@ import java.awt.Image;
 
 import java.util.ArrayList;
 
+/**
+ * 
+ */
 public class Character extends JLabel {
     /**
      * 
@@ -15,18 +18,19 @@ public class Character extends JLabel {
         UP, DOWN, LEFT, RIGHT
     }
 
-    protected Direction direction;
-    protected int characterX;
-    protected int characterY;
-    protected ArrayList<Integer[]> freeBoxes;
+    private Direction direction;
+    private int characterX;
+    private int characterY;
+    private ArrayList<Integer[]> freeBoxes;
 
-    protected String filename;
+    private String filename;
 
     /**
      * Constructeur pour la classe Pacman.
+     * 
      * @param freeBoxes
      */
-    public Character(final ArrayList<Integer[]> freeBoxes, String filename) {
+    public Character(final ArrayList<Integer[]> freeBoxes, final String filename) {
         super("");
         this.filename = filename;
 
@@ -45,37 +49,42 @@ public class Character extends JLabel {
         updatePosition();
     }
 
+    /**
+     * 
+     * @return
+     */
     public ImageIcon getImageIcon() {
         ImageIcon imageCharacter = new ImageIcon(this.filename);
         Image imageCharacterEdit = imageCharacter.getImage();
         imageCharacterEdit = imageCharacterEdit.getScaledInstance(
-            50,
-            50,
-            Image.SCALE_SMOOTH
-        );
+                50,
+                50,
+                Image.SCALE_SMOOTH);
         imageCharacter = new ImageIcon(imageCharacterEdit);
         return imageCharacter;
     }
 
-    
     /**
      * @return characterX
      */
     public int getCharacterX() {
         return characterX;
     }
+
     /**
      * @return characterY
      */
     public int getCharacterY() {
         return characterY;
     }
+
     /**
      * @param characterX
      */
     public void setCharacterX(final int characterX) {
         this.characterX = characterX;
     }
+
     /**
      * @param characterY
      */
@@ -93,7 +102,6 @@ public class Character extends JLabel {
     private void updatePosition() {
         this.setBounds(characterX + 5, characterY + 5, 50, 50);
     }
-
 
     /**
      * Méthode pour le mouvement de pacman en fonction
@@ -122,6 +130,7 @@ public class Character extends JLabel {
 
     /**
      * Setter pour la direction.
+     * 
      * @param direction
      */
     public void setDirection(final Direction direction) {
@@ -173,5 +182,37 @@ public class Character extends JLabel {
         }
 
         return listDirections;
+    }
+
+    /**
+     * 
+     * @return
+     */
+    public ArrayList<Integer[]> getFreeBoxes() {
+        return freeBoxes;
+    }
+
+    /**
+     * 
+     * @param freeBoxes
+     */
+    public void setFreeBoxes(final ArrayList<Integer[]> freeBoxes) {
+        this.freeBoxes = freeBoxes;
+    }
+
+    /**
+     * 
+     * @return
+     */
+    public String getFilename() {
+        return filename;
+    }
+
+    /**
+     * 
+     * @param filename
+     */
+    public void setFilename(final String filename) {
+        this.filename = filename;
     }
 }

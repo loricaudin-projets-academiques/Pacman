@@ -54,6 +54,10 @@ public class PacmanController {
         }
     }
 
+    /**
+     * 
+     * @param direction
+     */
     public void handleDirection(final Pacman.Direction direction) {
         if (model.checkPossibleDirections().contains(direction)) {
             model.setDirection(direction);

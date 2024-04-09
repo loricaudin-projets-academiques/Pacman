@@ -6,9 +6,16 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
+/**
+ * class gestion musique de fond.
+ */
 public class MusicPlayer extends Observable {
 
-    public void playMusic(String filePath) {
+    /**
+     * 
+     * @param filePath
+     */
+    public void playMusic(final String filePath) {
         try {
             File audioFile = new File(filePath);
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
