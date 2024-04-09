@@ -16,6 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import javax.swing.Timer;
 
@@ -83,10 +84,6 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         return this.myPanel;
     }
 
-    // private void setMyPanel(final JPanel myPanel) {
-    // this.myPanel = myPanel;
-    // }
-
     /**
      * Création d'un JPanel.
      *
@@ -113,11 +110,12 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 drawPacman(g, pacman.getCharacterX(), pacman.getCharacterY());
             }
         };
+        chrono.start();
         myPanel.setBackground(Color.black);
         myPanel.setLayout(null);
-
+        chrono.setBounds(10, tailleCarre * matrice.getMatrice().size() - 20, 50, 100);
+        myPanel.add(chrono);
         this.addKeyListener(this);
-
         return myPanel;
     }
 
