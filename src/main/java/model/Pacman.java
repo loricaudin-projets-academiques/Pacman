@@ -12,7 +12,7 @@ public class Pacman extends Character {
      * @param freeBoxes
      */
     public Pacman(final ArrayList<Integer[]> freeBoxes) {
-        super(freeBoxes, "src/main/ressources/pacman/pacman.png");
+        super(freeBoxes, "/PacmanGifs/RightSidePacman.gif");
 
         this.setDirection(this.direction);
 
@@ -27,19 +27,19 @@ public class Pacman extends Character {
         this.direction = direction;
 
         if (this.direction == Direction.DOWN) {
-            this.filename = "src/main/ressources/pacman/pacman_bottom.png";
+            this.filename = "/PacmanGifs/BottomSidePacman.gif";
         }
         // Vérifier si on peut aller en bas
         if (this.direction == Direction.UP) {
-            this.filename = "src/main/ressources/pacman/pacman_top.png";
+            this.filename = "/PacmanGifs/UpSidePacman.gif";
         }
         // Vérifier si on peut aller à gauche
         if (this.direction == Direction.LEFT) {
-            this.filename = "src/main/ressources/pacman/pacman_left.png";
+            this.filename = "/PacmanGifs/LeftSidePacman.gif";
         }
         // Vérifier si on peut aller à droite
         if (this.direction == Direction.RIGHT) {
-            this.filename = "src/main/ressources/pacman/pacman_right.png";
+            this.filename = "/PacmanGifs/RightSidePacman.gif";
         }
     }
 }

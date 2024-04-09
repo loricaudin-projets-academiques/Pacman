@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 
 import java.awt.Image;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 public class Character extends JLabel {
@@ -46,14 +47,15 @@ public class Character extends JLabel {
     }
 
     public ImageIcon getImageIcon() {
-        ImageIcon imageCharacter = new ImageIcon(this.filename);
-        Image imageCharacterEdit = imageCharacter.getImage();
-        imageCharacterEdit = imageCharacterEdit.getScaledInstance(
-            50,
-            50,
-            Image.SCALE_SMOOTH
-        );
-        imageCharacter = new ImageIcon(imageCharacterEdit);
+        URL imageURL = getClass().getResource(this.filename);
+        ImageIcon imageCharacter = new ImageIcon(imageURL);
+//        Image imageCharacterEdit = imageCharacter.getImage();
+//        imageCharacterEdit = imageCharacterEdit.getScaledInstance(
+//            50,
+//            50,
+//            Image.SCALE_SMOOTH
+//        );
+//        imageCharacter = new ImageIcon(imageCharacterEdit);
         return imageCharacter;
     }
 
