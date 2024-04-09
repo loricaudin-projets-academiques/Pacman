@@ -1,6 +1,7 @@
 import java.time.temporal.ChronoField;
 
 import view.HomeWindow;
+import view.Labyrinthe;
 import view.ChronoTest;
 
 /**
@@ -19,8 +20,7 @@ public final class App {
      * @param args Les arguments de la ligne de commande.
      */
     public static void main(final String[] args) {
-        ChronoTest window = new ChronoTest();
+        HomeWindow window = new HomeWindow();
         window.setVisible(true);
-        window.start();
     }
 }

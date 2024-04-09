@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.Timer;
 
+import javafx.stage.WindowEvent;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
