@@ -2,12 +2,12 @@ package model;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
-import java.awt.Image;
-
 import java.net.URL;
 import java.util.ArrayList;
 
+/**
+ * 
+ */
 public class Character extends JLabel {
     /**
      * 
@@ -16,18 +16,18 @@ public class Character extends JLabel {
         UP, DOWN, LEFT, RIGHT
     }
 
-    protected Direction direction;
-    protected int characterX;
-    protected int characterY;
-    protected ArrayList<Integer[]> freeBoxes;
+    private Direction direction;
+    private int characterX;
+    private int characterY;
+    private ArrayList<Integer[]> freeBoxes;
 
-    protected String filename;
+    private String filename;
 
     /**
      * Constructeur pour la classe Pacman.
      * @param freeBoxes
      */
-    public Character(final ArrayList<Integer[]> freeBoxes, String filename) {
+    public Character(final ArrayList<Integer[]> freeBoxes, final String filename) {
         super("");
         this.filename = filename;
 
@@ -46,6 +46,10 @@ public class Character extends JLabel {
         updatePosition();
     }
 
+    /**
+     * 
+     * @return ImageIcon
+     */
     public ImageIcon getImageIcon() {
         URL imageURL = getClass().getResource(this.filename);
         ImageIcon imageCharacter = new ImageIcon(imageURL);
@@ -85,8 +89,25 @@ public class Character extends JLabel {
         this.characterY = characterY;
     }
 
+    /**
+     * @return Direction
+     */
     public Direction getDirection() {
         return direction;
+    }
+
+    /**
+     * @return String
+     */
+    public String getFilename() {
+        return filename;
+    }
+
+    /**
+     * @param filename
+     */
+    public void setFilename(final String filename) {
+        this.filename = filename;
     }
 
     /**

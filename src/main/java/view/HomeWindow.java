@@ -18,8 +18,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import controller.HomeController;
-import model.MusicPlayer;
 import model.RoundButton;
 
 /**
@@ -53,13 +51,9 @@ public class HomeWindow extends JFrame implements ActionListener, Observer {
         this.getContentPane().setBackground(
                 new Color(0, 0, 0));
 
-        this.musicPlayer.addObserver(this);
-        this.homeController = new HomeController(musicPlayer, this);
-
     }
 
-    private MusicPlayer musicPlayer = new MusicPlayer();
-    private HomeController homeController;
+    
     private JPanel panel;
     private JPanel panelButton;
     private JButton buttonStart;
