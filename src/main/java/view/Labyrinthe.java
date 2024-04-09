@@ -58,7 +58,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         this.setIconImage(new ImageIcon("src/main/ressources/pacman/pacman.png").getImage());
         this.setSize(
                 tailleCarre * matrice.getMatrice().get(0).size() + 25,
-                tailleCarre * matrice.getMatrice().size() + 50);
+                tailleCarre * matrice.getMatrice().size() + 100);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
