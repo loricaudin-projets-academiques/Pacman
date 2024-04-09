@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -19,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import model.RoundButton;
+import model.Score;
 
 /**
  * 
@@ -26,13 +28,14 @@ import model.RoundButton;
 public class EndWindow extends JFrame implements ActionListener {
 
     private boolean won;
+    private Score score;
 
     /**
      * @param won
      */
-    public EndWindow(final boolean won) {
+    public EndWindow(final boolean won, final Score score) {
         this.won = won;
-
+        this.score = score;
         this.setTitle("Pac Man - Fin de partie");
         this.setIconImage(new ImageIcon("src/main/resources/pacman/pacman.png").getImage());
 
@@ -61,6 +64,7 @@ public class EndWindow extends JFrame implements ActionListener {
     private JButton buttonRestart;
     private JButton buttonExit;
     private JLabel labelTitre;
+    private JLabel labelScore;
 
     /**
      * @return JPanel
@@ -72,9 +76,17 @@ public class EndWindow extends JFrame implements ActionListener {
 
         c.gridx = 0;
         c.gridy = 0;
-        c.gridwidth = 3;
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.anchor = GridBagConstraints.PAGE_START;
+        c.gridwidth = 4;
+        c.fill = GridBagConstraints.NONE;
+        c.anchor = GridBagConstraints.CENTER;
+
+        labelScore = new JLabel();
+
+        labelScore.setText("Points : " + score.getCount() + "/" + score.getScoreTotal());
+        labelScore.setForeground(
+                    new Color(255, 255, 0));
+        labelScore.setFont(new Font("Serif", Font.BOLD, 30));
+        
 
         labelTitre = new JLabel();
 
@@ -82,7 +94,16 @@ public class EndWindow extends JFrame implements ActionListener {
             labelTitre.setText("Gagne !");
         } else {
             labelTitre.setText("Perdu...");
+            panel.add(labelScore, c);
         }
+
+        
+
+        c.gridx = 0;
+        c.gridy = 1;
+        c.gridwidth = 4;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.anchor = GridBagConstraints.PAGE_START;
 
         panel.add(labelTitre, c);
 
@@ -111,8 +132,8 @@ public class EndWindow extends JFrame implements ActionListener {
         buttonRestart.setPreferredSize(buttonExit.getPreferredSize());
 
         c.gridx = 0;
-        c.gridy = 1;
-        c.gridwidth = 3;
+        c.gridy = 2;
+        c.gridwidth = 4;
         c.fill = GridBagConstraints.NONE;
         c.anchor = GridBagConstraints.CENTER;
         panel.add(panelButton, c);
@@ -129,7 +150,7 @@ public class EndWindow extends JFrame implements ActionListener {
             LevelsWindow levelsWindow = new LevelsWindow(this);
             levelsWindow.setVisible(true);
         } else {
-            //this.dispose();
+            // this.dispose();
             System.exit(0);
         }
     }

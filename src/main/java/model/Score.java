@@ -6,11 +6,13 @@ package model;
 public class Score {
 
     private Integer count;
+    private Integer scoreTotal;
     /**
      * 
      */
-    public Score() {
+    public Score(final Integer scoreTotal) {
         this.count = 0;
+        this.scoreTotal = scoreTotal;
     }
 
     /**
@@ -18,8 +20,8 @@ public class Score {
      * @param nbPoint
      * @return Boolean
      */
-    public boolean control(final Integer nbPoint) {
-        return !(this.count < nbPoint);
+    public boolean control() {
+        return !(this.count < this.scoreTotal);
     }
     /**
      * 
@@ -35,5 +37,21 @@ public class Score {
      */
     public void setCount(final Integer count) {
         this.count += count;
+    }
+
+    /**
+     * 
+     * @return Integer
+     */
+    public Integer getScoreTotal() {
+        return scoreTotal;
+    }
+
+    /**
+     * 
+     * @param scoreTotal
+     */
+    public void setScoreTotal(Integer scoreTotal) {
+        this.scoreTotal = scoreTotal;
     }
 }

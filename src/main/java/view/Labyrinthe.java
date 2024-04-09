@@ -80,7 +80,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         this.musicPlayer.addObserver(this);
         this.musicController = new MusicController(musicPlayer);
 
-        this.score = new Score();
+        this.score = new Score(positionsFreeBoxes.size());
         this.jlabelScore = new JLabel();
         this.setContentPane(this.createPanel());
         jlabelScore.setForeground(
@@ -130,7 +130,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         myPanel.setLayout(null);
         chrono.setBounds(10, tailleCarre * matrice.getMatrice().size() - 20, 50, 100);
         myPanel.add(chrono);
-        jlabelScore.setText("Points : " + score.getCount() + "/" + positionsFreeBoxes.size());
+        jlabelScore.setText("Points : " + score.getCount() + "/" + score.getScoreTotal());
         jlabelScore.setBounds(tailleCarre * matrice.getMatrice().get(0).size() - 100,
                 tailleCarre * matrice.getMatrice().size() - 20, 100, 100);
         myPanel.add(jlabelScore);
@@ -238,12 +238,12 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 positionsFoods.get(i)[1] = 0;
                 notFound = false;
                 this.score.setCount(1);
-                if (score.control(positionsFreeBoxes.size())) {
+                if (score.control()) {
                     this.dispose();
-                    EndWindow endWindow = new EndWindow(true);
+                    EndWindow endWindow = new EndWindow(true, score);
                     endWindow.setVisible(true);
                 }
-                jlabelScore.setText("Points : " + score.getCount() + "/" + positionsFreeBoxes.size());
+                jlabelScore.setText("Points : " + score.getCount() + "/" + score.getScoreTotal());
                 myPanel.add(jlabelScore);
             }
         }
