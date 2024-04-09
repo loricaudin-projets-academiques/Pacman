@@ -7,7 +7,7 @@ import model.Pacman;
 
 import java.awt.Graphics;
 import java.awt.Color;
-
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -84,7 +84,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     private JPanel myPanel;
     private int tailleCarre = 50;
     private int sizeCircle = 10;
-    private ChronoTest chrono = new ChronoTest();
+    private Chrono chrono = new Chrono();
 
     // private ArrayList<Integer[]> positionsFoods = matrice.getFreeBoxes();
 
@@ -121,6 +121,8 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         chrono.start();
         myPanel.setBackground(Color.black);
         myPanel.setLayout(null);
+        chrono.setForeground(Color.yellow);
+        chrono.setFont(new Font("Serif", Font.BOLD, 16));
         chrono.setBounds(10, tailleCarre * matrice.getMatrice().size() - 20, 50, 100);
         myPanel.add(chrono);
         this.addKeyListener(this);
@@ -230,7 +232,8 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 this.scoreController.setCount(1);
                 if (scoreController.control(positionsFreeBoxes.size())) {
                     this.dispose();
-                    EndWindow endWindow = new EndWindow(true);
+                    chrono.stop();
+                    EndWindow endWindow = new EndWindow(true, chrono.getTime());
                     endWindow.setVisible(true);
                 }
             }
