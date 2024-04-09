@@ -15,8 +15,6 @@ public class Pacman extends Character {
         super(freeBoxes, "/PacmanGifs/RightSidePacman.gif");
 
         this.setDirection(this.getDirection());
-
-        this.setIcon(getImageIcon());
     }
 
     /**

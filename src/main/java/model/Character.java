@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * 
  */
-public class Character extends JLabel {
+public class Character extends Observable {
     /**
      * 
      */
@@ -28,9 +28,8 @@ public class Character extends JLabel {
      * @param freeBoxes
      */
     public Character(final ArrayList<Integer[]> freeBoxes, final String filename) {
-        super("");
+        super();
         this.filename = filename;
-
         this.freeBoxes = freeBoxes;
 
         // Position de départ
@@ -43,27 +42,9 @@ public class Character extends JLabel {
         int indexStartDirection = (int) (Math.random() * ((possibleDirections.size())));
         this.direction = possibleDirections.get(indexStartDirection);
 
-        updatePosition();
+        this.notifyObservers();
     }
 
-    /**
-     * 
-     * @return ImageIcon
-     */
-    public ImageIcon getImageIcon() {
-        URL imageURL = getClass().getResource(this.filename);
-        ImageIcon imageCharacter = new ImageIcon(imageURL);
-//        Image imageCharacterEdit = imageCharacter.getImage();
-//        imageCharacterEdit = imageCharacterEdit.getScaledInstance(
-//            50,
-//            50,
-//            Image.SCALE_SMOOTH
-//        );
-//        imageCharacter = new ImageIcon(imageCharacterEdit);
-        return imageCharacter;
-    }
-
-    
     /**
      * @return characterX
      */
@@ -111,14 +92,6 @@ public class Character extends JLabel {
     }
 
     /**
-     * 
-     */
-    private void updatePosition() {
-        this.setBounds(characterX + 5, characterY + 5, 50, 50);
-    }
-
-
-    /**
      * Méthode pour le mouvement de pacman en fonction
      * de la direction.
      */
@@ -140,7 +113,7 @@ public class Character extends JLabel {
             default:
                 break;
         }
-        updatePosition();
+        this.notifyObservers();
     }
 
     /**
