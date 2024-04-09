@@ -6,10 +6,11 @@ import model.Pacman;
 
 import java.awt.Graphics;
 import java.awt.Color;
-
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.time.Year;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -115,6 +116,8 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         chrono.start();
         myPanel.setBackground(Color.black);
         myPanel.setLayout(null);
+        chrono.setForeground(Color.yellow);
+        chrono.setFont(new Font("Serif", Font.BOLD, 16));
         chrono.setBounds(10, tailleCarre * matrice.getMatrice().size() - 20, 50, 100);
         myPanel.add(chrono);
         this.addKeyListener(this);

@@ -17,7 +17,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-
 import model.RoundButton;
 
 /**
@@ -51,9 +50,6 @@ public class EndWindow extends JFrame implements ActionListener {
             labelTitre.setFont(font);
             labelTitre.setForeground(
                     new Color(255, 255, 0));
-            labelTime.setFont(font);
-            labelTime.setForeground(
-                    new Color(255, 255, 0));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -63,6 +59,7 @@ public class EndWindow extends JFrame implements ActionListener {
 
     private JPanel panel;
     private JPanel panelButton;
+    private JPanel panelScore;
     private JButton buttonRestart;
     private JButton buttonExit;
     private JLabel labelTitre;
@@ -92,9 +89,6 @@ public class EndWindow extends JFrame implements ActionListener {
 
         panel.add(labelTitre, c);
 
-        labelTime = new JLabel(time);
-        panel.add(labelTime);
-
         // Boutons panel
         panelButton = new JPanel();
         panelButton.setLayout(new FlowLayout());
@@ -116,7 +110,6 @@ public class EndWindow extends JFrame implements ActionListener {
                 new LineBorder(Color.BLUE, 2),
                 new EmptyBorder(10, 20, 10, 20)));
         panelButton.add(buttonExit);
-        
         buttonRestart.setPreferredSize(buttonExit.getPreferredSize());
 
         c.gridx = 0;
@@ -126,7 +119,28 @@ public class EndWindow extends JFrame implements ActionListener {
         c.anchor = GridBagConstraints.CENTER;
         panel.add(panelButton, c);
 
-        /* Instructions pour créer des widgets */
+        // score pannel
+        panelScore = new JPanel();
+        panelScore.setLayout(new FlowLayout());
+        panelScore.setBackground(Color.BLACK);
+
+        labelTime = new JLabel(time);
+        labelTime.setFont(new Font("Serif", Font.BOLD, 18));
+        labelTime.setText("Votre temps : " + labelTime.getText());
+        panelScore.add(labelTime);
+        labelTime.setForeground(
+                new Color(255, 255, 0));
+        labelTime.setBorder(BorderFactory.createCompoundBorder(
+            new LineBorder(Color.YELLOW, 1),
+            new EmptyBorder(10, 30, 10, 30)));
+        System.out.println(labelTime.getText());
+
+        c.gridx = 0;
+        c.gridy = 2;
+        c.gridwidth = 3;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.anchor = GridBagConstraints.PAGE_START;
+        panel.add(panelScore, c);
 
         return panel;
     }
