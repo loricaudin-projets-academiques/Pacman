@@ -32,26 +32,30 @@ public class PacmanController {
      * Méthode pour handle les mouvements du jeu.
      * @param direction
      */
-
     public void handleMovement(final Pacman.Direction direction) {
         if (model.checkPossibleDirections().contains(direction)) {
             int speed = 10;
             switch (direction) {
                 case UP:
-                    model.setPacmanY(model.getPacmanY() - speed);
+                    model.setCharacterY(model.getCharacterY() - speed);
                     break;
                 case DOWN:
-                    model.setPacmanY(model.getPacmanY() + speed);
+                    model.setCharacterY(model.getCharacterY() + speed);
                     break;
                 case LEFT:
-                    model.setPacmanX(model.getPacmanX() - speed);
+                    model.setCharacterX(model.getCharacterX() - speed);
                     break;
                 case RIGHT:
-                    model.setPacmanX(model.getPacmanX() + speed);
+                    model.setCharacterX(model.getCharacterX() + speed);
                     break;
                 default:
                     break;
             }
+        }
+    }
+
+    public void handleDirection(final Pacman.Direction direction) {
+        if (model.checkPossibleDirections().contains(direction)) {
             model.setDirection(direction);
         }
     }

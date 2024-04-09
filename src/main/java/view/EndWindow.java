@@ -23,13 +23,17 @@ import model.RoundButton;
 /**
  * 
  */
-public class HomeWindow extends JFrame implements ActionListener {
+public class EndWindow extends JFrame implements ActionListener {
+
+    private boolean won;
 
     /**
-     * 
+     * @param won
      */
-    public HomeWindow() {
-        this.setTitle("Pac Man");
+    public EndWindow(final boolean won) {
+        this.won = won;
+
+        this.setTitle("Pac Man - Fin de partie");
         this.setIconImage(new ImageIcon("src/main/ressources/pacman/pacman.png").getImage());
 
         this.setSize(700, 500);
@@ -54,7 +58,7 @@ public class HomeWindow extends JFrame implements ActionListener {
 
     private JPanel panel;
     private JPanel panelButton;
-    private JButton buttonStart;
+    private JButton buttonRestart;
     private JButton buttonExit;
     private JLabel labelTitre;
 
@@ -72,7 +76,14 @@ public class HomeWindow extends JFrame implements ActionListener {
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.PAGE_START;
 
-        labelTitre = new JLabel("Pac-Man");
+        labelTitre = new JLabel();
+
+        if (won) {
+            labelTitre.setText("Gagne !");
+        } else {
+            labelTitre.setText("Perdu...");
+        }
+
         panel.add(labelTitre, c);
 
         // Boutons panel
@@ -80,12 +91,12 @@ public class HomeWindow extends JFrame implements ActionListener {
         panelButton.setLayout(new FlowLayout());
         panelButton.setBackground(Color.BLACK);
 
-        buttonStart = new RoundButton("Jouer");
-        buttonStart.addActionListener(this);
-        buttonStart.setForeground(
+        buttonRestart = new RoundButton("Rejouer");
+        buttonRestart.addActionListener(this);
+        buttonRestart.setForeground(
                 new Color(255, 255, 0));
-        buttonStart.setBackground(Color.BLACK);
-        panelButton.add(buttonStart);
+        buttonRestart.setBackground(Color.BLACK);
+        panelButton.add(buttonRestart);
 
         buttonExit = new RoundButton("Quitter");
         buttonExit.addActionListener(this);
@@ -97,7 +108,7 @@ public class HomeWindow extends JFrame implements ActionListener {
                 new EmptyBorder(10, 20, 10, 20)));
         panelButton.add(buttonExit);
 
-        buttonStart.setPreferredSize(buttonExit.getPreferredSize());
+        buttonRestart.setPreferredSize(buttonExit.getPreferredSize());
 
         c.gridx = 0;
         c.gridy = 1;
@@ -114,12 +125,11 @@ public class HomeWindow extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(final ActionEvent e) {
         JButton source = (JButton) e.getSource();
-        if (source == buttonStart) {
+        if (source == buttonRestart) {
             LevelsWindow levelsWindow = new LevelsWindow(this);
             levelsWindow.setVisible(true);
         } else {
             this.dispose();
         }
     }
-
 }
