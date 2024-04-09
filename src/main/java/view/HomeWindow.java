@@ -23,14 +23,14 @@ import model.RoundButton;
 /**
  * 
  */
-public class HomeWindow extends JFrame implements ActionListener {
+public class HomeWindow extends JFrame implements ActionListener, Observer {
 
     /**
      * 
      */
     public HomeWindow() {
         this.setTitle("Pac Man");
-        this.setIconImage(new ImageIcon("src/main/ressources/pacman/pacman.png").getImage());
+        this.setIconImage(new ImageIcon("src/main/resources/pacman/pacman.png").getImage());
 
         this.setSize(700, 500);
         this.setResizable(false);
@@ -40,7 +40,7 @@ public class HomeWindow extends JFrame implements ActionListener {
 
         this.setContentPane(this.createPanel());
         try {
-            File fontStyle = new File("src/main/ressources/fonts/PAC-FONT.TTF");
+            File fontStyle = new File("src/main/resources/fonts/PAC-FONT.TTF");
             Font font = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(50f);
             labelTitre.setFont(font);
             labelTitre.setForeground(
@@ -50,8 +50,10 @@ public class HomeWindow extends JFrame implements ActionListener {
         }
         this.getContentPane().setBackground(
                 new Color(0, 0, 0));
+
     }
 
+    
     private JPanel panel;
     private JPanel panelButton;
     private JButton buttonStart;
@@ -118,8 +120,16 @@ public class HomeWindow extends JFrame implements ActionListener {
             LevelsWindow levelsWindow = new LevelsWindow(this);
             levelsWindow.setVisible(true);
         } else {
-            this.dispose();
+            //this.dispose();
+            System.exit(0);
         }
+
+    }
+
+    @Override
+    public void update() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
 }

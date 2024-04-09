@@ -1,26 +1,40 @@
 package controller;
 
+/**
+ * 
+ */
 public class ScoreController {
     
-    Integer count;
-
-    public ScoreController(){
+    private Integer count;
+    /**
+     * 
+     */
+    public ScoreController() {
         this.count = 0;
     }
 
-    public boolean control(final Integer nbPoint){
-        if (this.count < nbPoint){
-            return false;
-        }else{
-            return true;
-        }
+    /**
+     * 
+     * @param nbPoint
+     * @return Boolean
+     */
+    public boolean control(final Integer nbPoint) {
+        return !(this.count < nbPoint);
     }
 
-    public Integer getCount(){
+    /**
+     * 
+     * @return Integer
+     */
+    public Integer getCount() {
         return this.count;
     }
 
-    public void setCount(Integer count){
+    /**
+     * 
+     * @param count
+     */
+    public void setCount(final Integer count) {
         this.count += count;
     }
 }

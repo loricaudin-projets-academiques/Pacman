@@ -35,7 +35,7 @@ public class EndWindow extends JFrame implements ActionListener {
         this.time = time;
 
         this.setTitle("Pac Man - Fin de partie");
-        this.setIconImage(new ImageIcon("src/main/ressources/pacman/pacman.png").getImage());
+        this.setIconImage(new ImageIcon("src/main/resources/pacman/pacman.png").getImage());
 
         this.setSize(700, 500);
         this.setResizable(false);
@@ -45,7 +45,7 @@ public class EndWindow extends JFrame implements ActionListener {
 
         this.setContentPane(this.createPanel());
         try {
-            File fontStyle = new File("src/main/ressources/fonts/PAC-FONT.TTF");
+            File fontStyle = new File("src/main/resources/fonts/PAC-FONT.TTF");
             Font font = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(50f);
             labelTitre.setFont(font);
             labelTitre.setForeground(
@@ -152,7 +152,8 @@ public class EndWindow extends JFrame implements ActionListener {
             LevelsWindow levelsWindow = new LevelsWindow(this);
             levelsWindow.setVisible(true);
         } else {
-            this.dispose();
+            //this.dispose();
+            System.exit(0);
         }
     }
 }

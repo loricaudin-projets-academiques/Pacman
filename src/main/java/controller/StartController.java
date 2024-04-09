@@ -25,7 +25,7 @@ public class StartController {
      * 
      */
     public void control() {
-        final String path = "src/main/ressources/maps/level" + this.level + ".txt";
+        final String path = "src/main/resources/maps/level" + this.level + ".txt";
         InitialisationMatrice matrice = new InitialisationMatrice(path);
         matrice.lecture();
 
@@ -36,8 +36,5 @@ public class StartController {
         Labyrinthe labyrinthe = new Labyrinthe(matrice, pacmanController, pacman);
         matrice.addObserver((Observer) labyrinthe);
         labyrinthe.setVisible(true);
-
-        
-
     }
 }

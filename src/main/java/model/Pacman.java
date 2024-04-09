@@ -12,9 +12,9 @@ public class Pacman extends Character {
      * @param freeBoxes
      */
     public Pacman(final ArrayList<Integer[]> freeBoxes) {
-        super(freeBoxes, "src/main/ressources/pacman/pacman.png");
+        super(freeBoxes, "/PacmanGifs/RightSidePacman.gif");
 
-        this.setDirection(this.direction);
+        this.setDirection(this.getDirection());
 
         this.setIcon(getImageIcon());
     }
@@ -24,22 +24,22 @@ public class Pacman extends Character {
      * @param direction
      */
     public void setDirection(final Direction direction) {
-        this.direction = direction;
+        super.setDirection(direction);
 
-        if (this.direction == Direction.DOWN) {
-            this.filename = "src/main/ressources/pacman/pacman_bottom.png";
+        if (this.getDirection() == Direction.DOWN) {
+            this.setFilename("/PacmanGifs/BottomSidePacman.gif");
         }
         // Vérifier si on peut aller en bas
-        if (this.direction == Direction.UP) {
-            this.filename = "src/main/ressources/pacman/pacman_top.png";
+        if (this.getDirection() == Direction.UP) {
+            this.setFilename("/PacmanGifs/UpSidePacman.gif");
         }
         // Vérifier si on peut aller à gauche
-        if (this.direction == Direction.LEFT) {
-            this.filename = "src/main/ressources/pacman/pacman_left.png";
+        if (this.getDirection() == Direction.LEFT) {
+            this.setFilename("/PacmanGifs/LeftSidePacman.gif");
         }
         // Vérifier si on peut aller à droite
-        if (this.direction == Direction.RIGHT) {
-            this.filename = "src/main/ressources/pacman/pacman_right.png";
+        if (this.getDirection() == Direction.RIGHT) {
+            this.setFilename("/PacmanGifs/RightSidePacman.gif");
         }
     }
 }
