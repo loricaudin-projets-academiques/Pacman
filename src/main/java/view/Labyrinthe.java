@@ -8,7 +8,7 @@ import model.Score;
 
 import java.awt.Graphics;
 import java.awt.Color;
-
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -91,7 +91,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     private JLabel jlabelScore;
     private int tailleCarre = 50;
     private int sizeCircle = 10;
-    private ChronoTest chrono = new ChronoTest();
+    private Chrono chrono = new Chrono();
 
     // private ArrayList<Integer[]> positionsFoods = matrice.getFreeBoxes();
 
@@ -128,6 +128,8 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         chrono.start();
         myPanel.setBackground(Color.black);
         myPanel.setLayout(null);
+        chrono.setForeground(Color.yellow);
+        chrono.setFont(new Font("Serif", Font.BOLD, 16));
         chrono.setBounds(10, tailleCarre * matrice.getMatrice().size() - 20, 50, 100);
         myPanel.add(chrono);
         jlabelScore.setText("Points : " + score.getCount() + "/" + score.getScoreTotal());
@@ -240,7 +242,8 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 this.score.setCount(1);
                 if (score.control()) {
                     this.dispose();
-                    EndWindow endWindow = new EndWindow(true, score);
+                    chrono.stop();
+                    EndWindow endWindow = new EndWindow(true, score, chrono.getTime());
                     endWindow.setVisible(true);
                 }
                 jlabelScore.setText("Points : " + score.getCount() + "/" + score.getScoreTotal());
