@@ -1,15 +1,11 @@
-import java.time.temporal.ChronoField;
-
 import view.HomeWindow;
-import view.Labyrinthe;
-import view.ChronoTest;
 
 /**
  * Classe principale de l'application.
  */
 public final class App {
     /**
-     * 
+     * Constructeur privé pour éviter l'instanciation de cette classe.
      */
     private App() {
     }

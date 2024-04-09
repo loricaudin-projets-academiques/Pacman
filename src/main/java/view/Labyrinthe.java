@@ -4,7 +4,6 @@ import controller.PacmanController;
 import model.Pacman;
 
 import java.awt.Graphics;
-import java.awt.BorderLayout;
 import java.awt.Color;
 
 import java.awt.event.ActionEvent;
@@ -13,7 +12,6 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -85,7 +83,8 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         chrono.start();
         myPanel.setBackground(Color.black);
         myPanel.setLayout(null);
-        myPanel.add(chrono, BorderLayout.SOUTH); // Add the timer label at the top
+        chrono.setBounds(10, tailleCarre * matrice.getMatrice().size() - 20, 50, 100);
+        myPanel.add(chrono);
         this.addKeyListener(this);
         return myPanel;
     }
