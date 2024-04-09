@@ -46,4 +46,8 @@ public class Chrono extends JLabel {
     public void stop() {
         timer.stop();
     }
+
+    public String getTime() {
+        return this.getText();
+    }
 }

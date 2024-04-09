@@ -221,7 +221,8 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 this.scoreController.setCount(1);
                 if (scoreController.control(positionsFreeBoxes.size())) {
                     this.dispose();
-                    EndWindow endWindow = new EndWindow(true);
+                    chrono.stop();
+                    EndWindow endWindow = new EndWindow(true, chrono.getTime());
                     endWindow.setVisible(true);
                 }
             }

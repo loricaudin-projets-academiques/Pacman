@@ -26,12 +26,14 @@ import model.RoundButton;
 public class EndWindow extends JFrame implements ActionListener {
 
     private boolean won;
+    private String time;
 
     /**
      * @param won
      */
-    public EndWindow(final boolean won) {
+    public EndWindow(final boolean won, final String time) {
         this.won = won;
+        this.time = time;
 
         this.setTitle("Pac Man - Fin de partie");
         this.setIconImage(new ImageIcon("src/main/ressources/pacman/pacman.png").getImage());
@@ -49,6 +51,9 @@ public class EndWindow extends JFrame implements ActionListener {
             labelTitre.setFont(font);
             labelTitre.setForeground(
                     new Color(255, 255, 0));
+            labelTime.setFont(font);
+            labelTime.setForeground(
+                    new Color(255, 255, 0));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,6 +66,7 @@ public class EndWindow extends JFrame implements ActionListener {
     private JButton buttonRestart;
     private JButton buttonExit;
     private JLabel labelTitre;
+    private JLabel labelTime;
 
     /**
      * @return JPanel
@@ -85,6 +91,9 @@ public class EndWindow extends JFrame implements ActionListener {
         }
 
         panel.add(labelTitre, c);
+
+        labelTime = new JLabel(time);
+        panel.add(labelTime);
 
         // Boutons panel
         panelButton = new JPanel();
