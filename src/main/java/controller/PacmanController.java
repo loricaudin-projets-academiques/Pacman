@@ -14,7 +14,6 @@ public class PacmanController {
      * Constructeur pour PacmanController.
      * @param model
      */
-
     public PacmanController(final Pacman model) {
         this.model = model;
         this.isPaused = false;
@@ -23,7 +22,6 @@ public class PacmanController {
     /**
      * Méthode pour handle les pauses du jeu.
      */
-
     public void handlePause() {
         this.isPaused = !this.isPaused;
     }
@@ -32,7 +30,6 @@ public class PacmanController {
      * Méthode pour handle les mouvements du jeu.
      * @param direction
      */
-
     public void handleMovement(final Pacman.Direction direction) {
         if (model.checkPossibleDirections().contains(direction)) {
             int speed = 10;
@@ -52,6 +49,15 @@ public class PacmanController {
                 default:
                     break;
             }
+        }
+    }
+
+    /**
+     * 
+     * @param direction
+     */
+    public void handleDirection(final Pacman.Direction direction) {
+        if (model.checkPossibleDirections().contains(direction)) {
             model.setDirection(direction);
         }
     }
@@ -59,7 +65,6 @@ public class PacmanController {
     /**
      * Méthode pour mettre à jour le model.
      */
-
     public void updateModel() {
         if (!isPaused) {
             model.move();
@@ -70,7 +75,6 @@ public class PacmanController {
      * Méthode pour savoir si le jeu est en pause.
      * @return isPaused
      */
-
     public boolean isPaused() {
         return isPaused;
     }

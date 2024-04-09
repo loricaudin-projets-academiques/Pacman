@@ -10,6 +10,7 @@ import java.io.File;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -36,6 +37,7 @@ public class LevelsWindow extends JDialog implements ActionListener {
      */
     public LevelsWindow(final JFrame modalWindow) {
         super(modalWindow, "Pacman - Choix du niveau");
+        this.setIconImage(new ImageIcon("src/main/resources/pacman/pacman.png").getImage());
 
         this.modalWindow = modalWindow;
 
@@ -51,7 +53,7 @@ public class LevelsWindow extends JDialog implements ActionListener {
         this.getContentPane().setBackground(Color.BLACK);
 
         try {
-            File fontStyle = new File("src/main/ressources/fonts/PAC-FONT.TTF");
+            File fontStyle = new File("src/main/resources/fonts/PAC-FONT.TTF");
             Font font = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(25f);
             labelSelectLevel.setFont(font);
             labelSelectLevel.setForeground(
@@ -195,7 +197,7 @@ public class LevelsWindow extends JDialog implements ActionListener {
      * @return Integer, nombreDeFichier
      */
     public Integer countFile() {
-        String cheminDossier = "src/main/ressources/maps";
+        String cheminDossier = "src/main/resources/maps";
         File dossier = new File(cheminDossier);
         if (dossier.isDirectory()) {
             File[] fichiers = dossier.listFiles();

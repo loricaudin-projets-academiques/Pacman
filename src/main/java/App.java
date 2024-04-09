@@ -5,12 +5,14 @@ import view.HomeWindow;
  */
 public final class App {
     /**
-     * 
+     * Constructeur privé pour éviter l'instanciation de cette classe.
      */
-    private App() { }
+    private App() {
+    }
 
     /**
      * Méthode principale de l'application. Lance l'interface utilisateur du Pacman.
+     * 
      * @param args Les arguments de la ligne de commande.
      */
     public static void main(final String[] args) {

@@ -2,11 +2,12 @@ package model;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
-import java.awt.Image;
-
+import java.net.URL;
 import java.util.ArrayList;
 
+/**
+ * 
+ */
 public class Character extends JLabel {
     /**
      * 
@@ -26,7 +27,7 @@ public class Character extends JLabel {
      * Constructeur pour la classe Pacman.
      * @param freeBoxes
      */
-    public Character(final ArrayList<Integer[]> freeBoxes, String filename) {
+    public Character(final ArrayList<Integer[]> freeBoxes, final String filename) {
         super("");
         this.filename = filename;
 
@@ -45,15 +46,20 @@ public class Character extends JLabel {
         updatePosition();
     }
 
+    /**
+     * 
+     * @return ImageIcon
+     */
     public ImageIcon getImageIcon() {
-        ImageIcon imageCharacter = new ImageIcon(this.filename);
-        Image imageCharacterEdit = imageCharacter.getImage();
-        imageCharacterEdit = imageCharacterEdit.getScaledInstance(
-            50,
-            50,
-            Image.SCALE_SMOOTH
-        );
-        imageCharacter = new ImageIcon(imageCharacterEdit);
+        URL imageURL = getClass().getResource(this.filename);
+        ImageIcon imageCharacter = new ImageIcon(imageURL);
+//        Image imageCharacterEdit = imageCharacter.getImage();
+//        imageCharacterEdit = imageCharacterEdit.getScaledInstance(
+//            50,
+//            50,
+//            Image.SCALE_SMOOTH
+//        );
+//        imageCharacter = new ImageIcon(imageCharacterEdit);
         return imageCharacter;
     }
 
@@ -83,8 +89,25 @@ public class Character extends JLabel {
         this.characterY = characterY;
     }
 
+    /**
+     * @return Direction
+     */
     public Direction getDirection() {
         return direction;
+    }
+
+    /**
+     * @return String
+     */
+    public String getFilename() {
+        return filename;
+    }
+
+    /**
+     * @param filename
+     */
+    public void setFilename(final String filename) {
+        this.filename = filename;
     }
 
     /**
@@ -137,24 +160,39 @@ public class Character extends JLabel {
             for (int ii = 0; ii < this.freeBoxes.size(); ii++) {
                 Integer[] zone = this.freeBoxes.get(ii);
                 // Vérifier si on peut aller en haut
-                if (characterX == zone[0] && characterY - 50 == zone[1] && direction != Direction.DOWN) {
+                if (characterX == zone[0] && characterY - 50 == zone[1]) {
                     listDirections.add(Direction.UP);
                 }
                 // Vérifier si on peut aller en bas
-                if (characterX == zone[0] && characterY + 50 == zone[1] && direction != Direction.UP) {
+                if (characterX == zone[0] && characterY + 50 == zone[1]) {
                     listDirections.add(Direction.DOWN);
                 }
                 // Vérifier si on peut aller à gauche
-                if (characterX - 50 == zone[0] && characterY == zone[1] && direction != Direction.RIGHT) {
+                if (characterX - 50 == zone[0] && characterY == zone[1]) {
                     listDirections.add(Direction.LEFT);
                 }
                 // Vérifier si on peut aller à droite
-                if (characterX + 50 == zone[0] && characterY == zone[1] && direction != Direction.LEFT) {
+                if (characterX + 50 == zone[0] && characterY == zone[1]) {
                     listDirections.add(Direction.RIGHT);
                 }
             }
         } else {
             listDirections.add(this.direction);
+            if (this.direction == Direction.DOWN) {
+                listDirections.add(Direction.UP);
+            }
+            // Vérifier si on peut aller en bas
+            if (this.direction == Direction.UP) {
+                listDirections.add(Direction.DOWN);
+            }
+            // Vérifier si on peut aller à gauche
+            if (this.direction == Direction.RIGHT) {
+                listDirections.add(Direction.LEFT);
+            }
+            // Vérifier si on peut aller à droite
+            if (this.direction == Direction.LEFT) {
+                listDirections.add(Direction.RIGHT);
+            }
         }
 
         return listDirections;
