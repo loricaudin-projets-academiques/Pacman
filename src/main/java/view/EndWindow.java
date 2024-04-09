@@ -129,7 +129,8 @@ public class EndWindow extends JFrame implements ActionListener {
             LevelsWindow levelsWindow = new LevelsWindow(this);
             levelsWindow.setVisible(true);
         } else {
-            this.dispose();
+            //this.dispose();
+            System.exit(0);
         }
     }
 }
