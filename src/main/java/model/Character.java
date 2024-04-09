@@ -53,13 +53,6 @@ public class Character extends JLabel {
     public ImageIcon getImageIcon() {
         URL imageURL = getClass().getResource(this.filename);
         ImageIcon imageCharacter = new ImageIcon(imageURL);
-//        Image imageCharacterEdit = imageCharacter.getImage();
-//        imageCharacterEdit = imageCharacterEdit.getScaledInstance(
-//            50,
-//            50,
-//            Image.SCALE_SMOOTH
-//        );
-//        imageCharacter = new ImageIcon(imageCharacterEdit);
         return imageCharacter;
     }
 
@@ -123,6 +116,13 @@ public class Character extends JLabel {
      * de la direction.
      */
     public void move() {
+        ArrayList<Direction> possibleDirections = checkPossibleDirections();
+
+        if (!possibleDirections.contains(this.direction)) {
+            int indexStartDirection = (int) (Math.random() * ((possibleDirections.size())));
+            this.setDirection(possibleDirections.get(indexStartDirection));
+        }
+
         int afstand = 50;
         switch (direction) {
             case UP:
