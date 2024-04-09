@@ -35,9 +35,7 @@ public class StartController {
 
         Labyrinthe labyrinthe = new Labyrinthe(matrice, pacmanController, pacman);
         matrice.addObserver((Observer) labyrinthe);
-        labyrinthe.setVisible(true);
-
-        
+        labyrinthe.setVisible(true); 
 
     }
 }
