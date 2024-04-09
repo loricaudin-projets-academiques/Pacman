@@ -78,7 +78,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     private JPanel myPanel;
     private int tailleCarre = 50;
     private int sizeCircle = 10;
-    private ChronoTest chrono = new ChronoTest();
+    private Chrono chrono = new Chrono();
 
     // private ArrayList<Integer[]> positionsFoods = matrice.getFreeBoxes();
 

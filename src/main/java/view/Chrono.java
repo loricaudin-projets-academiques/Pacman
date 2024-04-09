@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 /**
  * 
  */
-public class ChronoTest extends JLabel {
+public class Chrono extends JLabel {
     private Timer timer;
     private JLabel label;
     private int sec;
@@ -18,7 +18,7 @@ public class ChronoTest extends JLabel {
     /**
      * update toutes les secondes avec la nouvelle valeur du chrono.
      */
-    public ChronoTest() {
+    public Chrono() {
         super("00:00");
         super.setForeground(Color.white);
         this.label = this;

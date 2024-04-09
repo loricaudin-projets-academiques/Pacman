@@ -107,7 +107,7 @@ public class EndWindow extends JFrame implements ActionListener {
                 new LineBorder(Color.BLUE, 2),
                 new EmptyBorder(10, 20, 10, 20)));
         panelButton.add(buttonExit);
-
+        
         buttonRestart.setPreferredSize(buttonExit.getPreferredSize());
 
         c.gridx = 0;
