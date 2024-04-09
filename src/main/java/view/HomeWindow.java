@@ -120,7 +120,7 @@ public class HomeWindow extends JFrame implements ActionListener, Observer {
             LevelsWindow levelsWindow = new LevelsWindow(this);
             levelsWindow.setVisible(true);
         } else {
-            //this.dispose();
+            // this.dispose();
             System.exit(0);
         }
 

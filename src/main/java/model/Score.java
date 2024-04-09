@@ -1,15 +1,15 @@
-package controller;
+package model;
 
 /**
- * 
+ * Class gestion du score.
  */
-public class ScoreController {
-    
+public class Score {
+
     private Integer count;
     /**
      * 
      */
-    public ScoreController() {
+    public Score() {
         this.count = 0;
     }
 
@@ -21,7 +21,6 @@ public class ScoreController {
     public boolean control(final Integer nbPoint) {
         return !(this.count < nbPoint);
     }
-
     /**
      * 
      * @return Integer
