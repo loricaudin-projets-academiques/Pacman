@@ -3,7 +3,6 @@ package controller;
 import model.InitialisationMatrice;
 import model.Pacman;
 import view.Labyrinthe;
-import view.Observer;
 
 import java.util.ArrayList;
 

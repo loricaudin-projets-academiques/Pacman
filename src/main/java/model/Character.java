@@ -1,8 +1,5 @@
 package model;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import java.net.URL;
 import java.util.ArrayList;
 
 /**

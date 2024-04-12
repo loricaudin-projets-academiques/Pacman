@@ -3,7 +3,6 @@ package view;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.net.URL;
-import java.util.ArrayList;
 
 import model.Character;
 
@@ -17,7 +16,7 @@ public class CharacterView extends JLabel implements Observer {
      * 
      * @param character
      */
-    public CharacterView(Character character) {
+    public CharacterView(final Character character) {
         super("");
         this.character = character;
 
