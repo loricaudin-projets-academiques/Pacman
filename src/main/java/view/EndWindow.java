@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import model.RoundButton;
+import model.Score;
 
 /**
  * 
@@ -25,14 +26,22 @@ import model.RoundButton;
 public class EndWindow extends JFrame implements ActionListener {
 
     private boolean won;
+
+    private Score score;
+
     private String time;
 
     /**
      * @param won
      */
-    public EndWindow(final boolean won, final String time) {
+
+    public EndWindow(final boolean won, final Score score, final String time) {
         this.won = won;
+        this.score = score;
+
         this.time = time;
+
+        this.labelTitre = new JLabel();
 
         this.setTitle("Pac Man - Fin de partie");
         this.setIconImage(new ImageIcon("src/main/resources/pacman/pacman.png").getImage());
@@ -60,9 +69,13 @@ public class EndWindow extends JFrame implements ActionListener {
     private JPanel panel;
     private JPanel panelButton;
     private JPanel panelScore;
+    private JPanel panelPoint;
     private JButton buttonRestart;
     private JButton buttonExit;
     private JLabel labelTitre;
+
+    private JLabel labelScore;
+
     private JLabel labelTime;
 
     /**
@@ -74,18 +87,39 @@ public class EndWindow extends JFrame implements ActionListener {
         GridBagConstraints c = new GridBagConstraints();
 
         c.gridx = 0;
-        c.gridy = 0;
-        c.gridwidth = 3;
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.anchor = GridBagConstraints.PAGE_START;
+        c.gridy = 3;
+        c.gridwidth = 4;
+        c.fill = GridBagConstraints.NONE;
+        c.anchor = GridBagConstraints.CENTER;
 
-        labelTitre = new JLabel();
+        // score pannel
+        panelPoint = new JPanel();
+        panelPoint.setLayout(new FlowLayout());
+        panelPoint.setBackground(Color.BLACK);
+
+        labelScore = new JLabel(score.getCount() + "/" + score.getScoreTotal());
+        labelScore.setFont(new Font("Serif", Font.BOLD, 18));
+        labelScore.setText("Vos points : " + labelScore.getText());
+        panelPoint.add(labelScore);
+        labelScore.setForeground(
+                new Color(255, 255, 0));
+        labelScore.setBorder(BorderFactory.createCompoundBorder(
+                new LineBorder(Color.YELLOW, 1),
+                new EmptyBorder(10, 30, 10, 30)));
+        System.out.println(labelScore.getText());
 
         if (won) {
             labelTitre.setText("Gagne !");
         } else {
             labelTitre.setText("Perdu...");
+            panel.add(panelPoint, c);
         }
+
+        c.gridx = 0;
+        c.gridy = 0;
+        c.gridwidth = 4;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.anchor = GridBagConstraints.PAGE_START;
 
         panel.add(labelTitre, c);
 
@@ -114,7 +148,7 @@ public class EndWindow extends JFrame implements ActionListener {
 
         c.gridx = 0;
         c.gridy = 1;
-        c.gridwidth = 3;
+        c.gridwidth = 4;
         c.fill = GridBagConstraints.NONE;
         c.anchor = GridBagConstraints.CENTER;
         panel.add(panelButton, c);
@@ -131,13 +165,13 @@ public class EndWindow extends JFrame implements ActionListener {
         labelTime.setForeground(
                 new Color(255, 255, 0));
         labelTime.setBorder(BorderFactory.createCompoundBorder(
-            new LineBorder(Color.YELLOW, 1),
-            new EmptyBorder(10, 30, 10, 30)));
+                new LineBorder(Color.YELLOW, 1),
+                new EmptyBorder(10, 30, 10, 30)));
         System.out.println(labelTime.getText());
 
         c.gridx = 0;
         c.gridy = 2;
-        c.gridwidth = 3;
+        c.gridwidth = 4;
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.PAGE_START;
         panel.add(panelScore, c);
@@ -152,7 +186,7 @@ public class EndWindow extends JFrame implements ActionListener {
             LevelsWindow levelsWindow = new LevelsWindow(this);
             levelsWindow.setVisible(true);
         } else {
-            //this.dispose();
+            // this.dispose();
             System.exit(0);
         }
     }
