@@ -14,6 +14,7 @@ public class Chrono extends JLabel {
     private Timer timer;
     private JLabel label;
     private int sec;
+    private boolean stoped;
 
     /**
      * update toutes les secondes avec la nouvelle valeur du chrono.
@@ -31,6 +32,7 @@ public class Chrono extends JLabel {
                 label.setText(String.format("%02d:%02d", minutes, remainingSeconds));
             }
         });
+        this.stoped = true;
     }
 
     /**
@@ -38,6 +40,7 @@ public class Chrono extends JLabel {
      */
     public void start() {
         timer.start();
+        stoped = false;
     }
 
     /**
@@ -45,6 +48,7 @@ public class Chrono extends JLabel {
      */
     public void stop() {
         timer.stop();
+        stoped = true;
     }
 
     /**
@@ -53,5 +57,13 @@ public class Chrono extends JLabel {
      */
     public String getTime() {
         return this.getText();
+    }
+    
+    /**
+     * Vérifie si le chrono est arrêté.
+     * @return stoped
+     */
+    public boolean isStoped() {
+        return stoped;
     }
 }

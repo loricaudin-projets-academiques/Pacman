@@ -3,14 +3,13 @@ package view;
 import controller.MonsterController;
 import controller.MusicController;
 import controller.PacmanController;
-
+import controller.PlayController;
 import model.Pacman;
 import model.Score;
 
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -49,6 +48,9 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     private MusicController musicController;
 
     private Score score;
+    private PlayController playController;
+
+    private Chrono chrono;
 
     /**
      * Constructeur de la classe Labyrinthe.
@@ -101,6 +103,16 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         this.musicController = new MusicController(musicPlayer);
 
         this.score = new Score(positionsFreeBoxes.size());
+        this.chrono = new Chrono();
+        this.playController = new PlayController(
+            this,
+            this.score,
+            this.chrono,
+            this.pacman,
+            this.listMonsters
+        );
+
+
         this.jlabelScore = new JLabel();
         this.setContentPane(this.createPanel());
         jlabelScore.setForeground(
@@ -111,7 +123,6 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     private JLabel jlabelScore;
     private int tailleCarre = 50;
     private int sizeCircle = 10;
-    private Chrono chrono = new Chrono();
 
     // private ArrayList<Integer[]> positionsFoods = matrice.getFreeBoxes();
 
@@ -201,13 +212,6 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         );
     }
 
-    /**
-     * classe pour créer le boutton.
-     */
-    public final void actionPerformed(final ActionEvent e) {
-
-    }
-
     @Override
     public final void keyPressed(final KeyEvent e) {
         Pacman.Direction pressedDirection = null;
@@ -267,13 +271,8 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 positionsFoods.get(i)[0] = 0;
                 positionsFoods.get(i)[1] = 0;
                 notFound = false;
-                this.score.setCount(1);
-                if (score.control()) {
-                    this.dispose();
-                    chrono.stop();
-                    EndWindow endWindow = new EndWindow(true, score, chrono.getTime());
-                    endWindow.setVisible(true);
-                }
+                playController.controlWin();
+                
                 jlabelScore.setText("Points : " + score.getCount() + "/" + score.getScoreTotal());
                 myPanel.add(jlabelScore);
             }
@@ -282,7 +281,8 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         for (MonsterController monsterController : listMonstersControllers) {
             monsterController.updatePosition();
         }
+        if (!chrono.isStoped()) {
+            playController.controlLoose();
+        }
     }
-
-
 }
