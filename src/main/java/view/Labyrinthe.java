@@ -30,8 +30,9 @@ import model.MusicPlayer;
 public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     private InitialisationMatrice matrice;
-    private PacmanController controller;
+    private PacmanController pacmanController;
     private Pacman pacman;
+    private CharacterView pacmanView;
 
     private Timer timer;
     private ArrayList<Integer[]> positionsFoods = new ArrayList<>();
@@ -50,11 +51,15 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
             final PacmanController controller,
             final Pacman pacman) {
         this.matrice = matrice;
+        matrice.addObserver(this);
 
         this.pacman = pacman;
-        this.controller = controller;
+        this.pacmanView = new CharacterView(pacman);
+        pacman.addObserver(this);
 
-        this.timer = new Timer(100, e -> movePacman());
+        this.pacmanController = new PacmanController(pacman);
+
+        this.timer = new Timer(100, e -> pacmanController.handleMovement(pacman.getDirection()));
         this.timer.start();
 
         this.setTitle("Pac Man");
@@ -162,7 +167,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
     private void drawPacman(final Graphics g, final int x, final int y) {
         int padding = 5;
         g.drawImage(
-                pacman.getImageIcon().getImage(),
+                pacmanView.getImageIcon().getImage(),
                 x + padding,
                 y + padding,
                 tailleCarre,
@@ -194,7 +199,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 pressedDirection = Pacman.Direction.RIGHT;
                 break;
             case KeyEvent.VK_ESCAPE:
-                controller.handlePause();
+                pacmanController.handlePause();
                 break;
             default:
                 return;
@@ -203,7 +208,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         if (pacman.getDirection() == pressedDirection) {
             return;
         } else {
-            controller.handleDirection(pressedDirection);
+            pacmanController.handleDirection(pressedDirection);
         }
 
         myPanel.repaint();
@@ -221,12 +226,10 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     @Override
     public void update() {
-        // TODO Auto-generated method stub
-
+        movePacman();
     }
 
     private void movePacman() {
-        controller.handleMovement(pacman.getDirection());
         int pacmanX = pacman.getCharacterX();
         int pacmanY = pacman.getCharacterY();
         boolean notFound = true;
