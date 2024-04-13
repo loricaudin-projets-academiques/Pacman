@@ -9,7 +9,7 @@ import model.Character;
 /**
  * Vue pour modéliser un personnage dans le labyrinthe.
  */
-public class CharacterView extends JLabel implements Observer {
+public class CharacterView extends JLabel {
 
     private Character character;
     /**
@@ -33,9 +33,10 @@ public class CharacterView extends JLabel implements Observer {
         return imageCharacter;
     }
 
+    /*
     @Override
     public void update() {
         this.setBounds(character.getCharacterX() + 5, character.getCharacterY() + 5, 50, 50);
     }
-    
+    */    
 }

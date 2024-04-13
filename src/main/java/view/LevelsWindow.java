@@ -185,7 +185,10 @@ public class LevelsWindow extends JDialog implements ActionListener {
             }
             
             modalWindow.dispose();
-            StartController controller = new StartController(level, comboxBoxMonsters.getSelectedIndex());
+            StartController controller = new StartController(
+                level,
+                comboxBoxMonsters.getSelectedIndex()
+            );
             controller.control();
         } else {
             this.dispose();
