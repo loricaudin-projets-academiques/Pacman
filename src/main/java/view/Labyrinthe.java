@@ -104,7 +104,6 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     /**
      * Création d'un JPanel.
-     *
      * @return JPanel
      */
     private JPanel createPanel() {

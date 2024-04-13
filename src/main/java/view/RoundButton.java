@@ -1,4 +1,4 @@
-package model;
+package view;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -7,12 +7,12 @@ import java.awt.geom.RoundRectangle2D;
 import javax.swing.JButton;
 
 /**
- *classe pour arrondire les boutons.
+ * Classe pour arrondir les boutons.
  */
 public class RoundButton extends JButton {
 
     /**
-     * 
+     * Constructeur du RoundButton.
      * @param label
      */
     public RoundButton(final String label) {

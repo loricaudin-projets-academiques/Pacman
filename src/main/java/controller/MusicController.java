@@ -3,13 +3,13 @@ package controller;
 import model.MusicPlayer;
 
 /**
- * Contrôleur pour gérer la musique de Pacman
+ * Contrôleur pour gérer la musique de Pacman.
  */
 public class MusicController {
     private MusicPlayer musicPlayer;
 
     /**
-     * Instancier la classe
+     * Instancier la classe.
      * @param musicPlayer
      */
     public MusicController(final MusicPlayer musicPlayer) {
@@ -19,7 +19,7 @@ public class MusicController {
     }
 
     /**
-     * Jouer la musique de démarrage de Pacman en arrière-plan
+     * Jouer la musique de démarrage de Pacman en arrière-plan.
      */
     public void playBackgroundMusic() {
         musicPlayer.playMusic("src/main/resources/sound/pacman_music.wav");

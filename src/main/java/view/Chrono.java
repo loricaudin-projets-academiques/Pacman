@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 
 /**
- * 
+ * Vue du chronomètre.
  */
 public class Chrono extends JLabel {
     private Timer timer;
@@ -41,12 +41,16 @@ public class Chrono extends JLabel {
     }
 
     /**
-     * arret du chrono.
+     * arrêt du chrono.
      */
     public void stop() {
         timer.stop();
     }
 
+    /**
+     * getter du temps.
+     * @return
+     */
     public String getTime() {
         return this.getText();
     }

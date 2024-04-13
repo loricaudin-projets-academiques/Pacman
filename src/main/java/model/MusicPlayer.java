@@ -7,11 +7,11 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
 /**
- * Modèle pour jouer de la musique
+ * Modèle pour jouer de la musique.
  */
 public class MusicPlayer extends Observable {
     /**
-     * Démarrer une musique à partir du chemin passé en paramètre
+     * Démarrer une musique à partir du chemin passé en paramètre.
      * @param filePath
      */
     public void playMusic(final String filePath) {

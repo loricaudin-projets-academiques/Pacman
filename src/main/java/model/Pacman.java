@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Pacman extends Character {
 
     /**
+     * Constructeur du pacman.
      * @param freeBoxes
      */
     public Pacman(final ArrayList<Integer[]> freeBoxes) {

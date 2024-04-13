@@ -3,11 +3,11 @@ package model;
 import java.util.ArrayList;
 
 /**
- * 
+ * Classe représentant les différents personnages du jeu.
  */
 public class Character extends Observable {
     /**
-     * 
+     * Énumération des directions possibles du personnage.
      */
     public enum Direction {
         UP, DOWN, LEFT, RIGHT
@@ -44,24 +44,28 @@ public class Character extends Observable {
     }
 
     /**
+     * Récupérer la coordonnée x.
      * @return characterX
      */
     public int getCharacterX() {
         return characterX;
     }
     /**
+     * Récupérer la coordonnée y.
      * @return characterY
      */
     public int getCharacterY() {
         return characterY;
     }
     /**
+     * Changer la coordonnée x.
      * @param characterX
      */
     public void setCharacterX(final int characterX) {
         this.characterX = characterX;
     }
     /**
+     * Changer la coordonnée y.
      * @param characterY
      */
     public void setCharacterY(final int characterY) {
@@ -69,6 +73,7 @@ public class Character extends Observable {
     }
 
     /**
+     * Récupérer la direction.
      * @return Direction
      */
     public Direction getDirection() {
@@ -76,6 +81,7 @@ public class Character extends Observable {
     }
 
     /**
+     * Récupérer le lien vers l'image du personnage.
      * @return String
      */
     public String getFilename() {
@@ -83,6 +89,7 @@ public class Character extends Observable {
     }
 
     /**
+     * Changer le lien vers l'image du personnage.
      * @param filename
      */
     public void setFilename(final String filename) {
@@ -123,7 +130,8 @@ public class Character extends Observable {
     }
 
     /**
-     * 
+     * Vérifier les directions possibles selon la position du personnage dans le labyrinthe.
+     * @return liste des directions possibles
      */
     public ArrayList<Direction> checkPossibleDirections() {
         ArrayList<Direction> listDirections = new ArrayList<Direction>();

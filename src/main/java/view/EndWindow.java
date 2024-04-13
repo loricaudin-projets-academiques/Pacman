@@ -17,11 +17,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import model.RoundButton;
+
 import model.Score;
 
 /**
- * 
+ * Fenêtre de fin d'une partie.
  */
 public class EndWindow extends JFrame implements ActionListener {
 
@@ -32,9 +32,11 @@ public class EndWindow extends JFrame implements ActionListener {
     private String time;
 
     /**
-     * @param won
+     * Constructeur de EndWindow.
+     * @param won (true affiche la fenêtre "gagné", false affiche la fenêtre "perdu")
+     * @param score
+     * @param time
      */
-
     public EndWindow(final boolean won, final Score score, final String time) {
         this.won = won;
         this.score = score;
@@ -79,6 +81,7 @@ public class EndWindow extends JFrame implements ActionListener {
     private JLabel labelTime;
 
     /**
+     * Création d'un JPanel.
      * @return JPanel
      */
     private JPanel createPanel() {

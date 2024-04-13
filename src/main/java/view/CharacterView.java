@@ -7,13 +7,13 @@ import java.net.URL;
 import model.Character;
 
 /**
- * 
+ * Vue pour modéliser un personnage dans le labyrinthe.
  */
 public class CharacterView extends JLabel implements Observer {
 
     private Character character;
     /**
-     * 
+     * Constructeur du CharacterView.
      * @param character
      */
     public CharacterView(final Character character) {
@@ -24,7 +24,7 @@ public class CharacterView extends JLabel implements Observer {
     }
 
     /**
-     * 
+     * Récupérer l'icône de l'image.
      * @return ImageIcon
      */
     public ImageIcon getImageIcon() {
