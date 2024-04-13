@@ -20,6 +20,5 @@ junit:
     # Useful only for debugging
     #- cat ~/.m2/settings.xml
   script:
-    - apt-get install -y xorg
     - export DISPLAY=:0
     - mvn test
