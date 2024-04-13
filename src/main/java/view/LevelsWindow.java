@@ -23,17 +23,16 @@ import javax.swing.border.LineBorder;
 import java.awt.Font;
 
 import controller.StartController;
-import model.RoundButton;
 
 /**
- * 
+ * Fenêtre de choix du niveau.
  */
 public class LevelsWindow extends JDialog implements ActionListener {
 
     private JFrame modalWindow;
 
     /**
-     * 
+     * Constructeur de LevelsWindow.
      */
     public LevelsWindow(final JFrame modalWindow) {
         super(modalWindow, "Pacman - Choix du niveau");
@@ -43,7 +42,7 @@ public class LevelsWindow extends JDialog implements ActionListener {
 
         this.setModal(true);
 
-        this.setSize(400, 250);
+        this.setSize(500, 300);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
 
@@ -58,6 +57,9 @@ public class LevelsWindow extends JDialog implements ActionListener {
             labelSelectLevel.setFont(font);
             labelSelectLevel.setForeground(
                     new Color(255, 255, 0));
+            labelSelectMonsters.setFont(font);
+            labelSelectMonsters.setForeground(
+                    new Color(255, 255, 0));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -67,9 +69,12 @@ public class LevelsWindow extends JDialog implements ActionListener {
     private JButton buttonStart;
     private JButton buttonCancel;
     private JComboBox comboxBoxLevels;
+    private JComboBox comboxBoxMonsters;
     private JLabel labelSelectLevel;
+    private JLabel labelSelectMonsters;
 
     /**
+     * Création d'un JPanel.
      * @return JPanel
      */
     private JPanel createPanel() {
@@ -85,10 +90,10 @@ public class LevelsWindow extends JDialog implements ActionListener {
 
         panel.add(Box.createRigidArea(new Dimension(0, 10))); // Ajouter un espacement
 
-        JPanel panelComboBox = new JPanel();
-        panelComboBox.setLayout(new FlowLayout());
+        JPanel panelComboBoxLevels = new JPanel();
+        panelComboBoxLevels.setLayout(new FlowLayout());
 
-        panelComboBox.setBackground(Color.BLACK);
+        panelComboBoxLevels.setBackground(Color.BLACK);
 
         comboxBoxLevels = new JComboBox<String>();
         int nbFile = countFile();
@@ -100,10 +105,37 @@ public class LevelsWindow extends JDialog implements ActionListener {
         comboxBoxLevels.setForeground(
                 new Color(255, 255, 0));
 
-        panelComboBox.add(comboxBoxLevels);
+        panelComboBoxLevels.add(comboxBoxLevels);
 
-        panelComboBox.setAlignmentX(CENTER_ALIGNMENT);
-        panel.add(panelComboBox);
+        panelComboBoxLevels.setAlignmentX(CENTER_ALIGNMENT);
+        panel.add(panelComboBoxLevels);
+
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Ajouter un espacement
+
+        labelSelectMonsters = new JLabel("Nombre de monstres");
+        labelSelectMonsters.setAlignmentX(CENTER_ALIGNMENT);
+        panel.add(labelSelectMonsters);
+
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Ajouter un espacement
+
+        JPanel panelComboBoxMonsters = new JPanel();
+        panelComboBoxMonsters.setLayout(new FlowLayout());
+
+        panelComboBoxMonsters.setBackground(Color.BLACK);
+
+        comboxBoxMonsters = new JComboBox<String>();
+        for (int i = 0; i <= 5; i++) {
+            comboxBoxMonsters.addItem(i);
+        }
+
+        comboxBoxMonsters.setBackground(Color.BLACK);
+        comboxBoxMonsters.setForeground(
+                new Color(255, 255, 0));
+
+        panelComboBoxMonsters.add(comboxBoxMonsters);
+
+        panelComboBoxMonsters.setAlignmentX(CENTER_ALIGNMENT);
+        panel.add(panelComboBoxMonsters);
 
         panel.add(Box.createRigidArea(new Dimension(0, 10))); // Ajouter un espacement
 
@@ -153,7 +185,10 @@ public class LevelsWindow extends JDialog implements ActionListener {
             }
 
             modalWindow.dispose();
-            StartController controller = new StartController(level);
+            StartController controller = new StartController(
+                level,
+                comboxBoxMonsters.getSelectedIndex()
+            );
             controller.control();
         } else {
             this.dispose();
@@ -161,7 +196,7 @@ public class LevelsWindow extends JDialog implements ActionListener {
     }
 
     /**
-     * 
+     * Compter le nombre de maps.
      * @return Integer, nombreDeFichier
      */
     public Integer countFile() {

@@ -18,15 +18,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import model.RoundButton;
-
 /**
- * 
+ * Fenêtre de la page d'accueil.
  */
-public class HomeWindow extends JFrame implements ActionListener, Observer {
+public class HomeWindow extends JFrame implements ActionListener {
 
     /**
-     * 
+     * Constructeur de HomeWindow.
      */
     public HomeWindow() {
         this.setTitle("Pac Man");
@@ -61,6 +59,7 @@ public class HomeWindow extends JFrame implements ActionListener, Observer {
     private JLabel labelTitre;
 
     /**
+     * Création d'un JPanel.
      * @return JPanel
      */
     private JPanel createPanel() {
@@ -107,8 +106,6 @@ public class HomeWindow extends JFrame implements ActionListener, Observer {
         c.fill = GridBagConstraints.NONE;
         c.anchor = GridBagConstraints.CENTER;
         panel.add(panelButton, c);
-
-        /* Instructions pour créer des widgets */
 
         return panel;
     }

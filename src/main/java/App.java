@@ -12,7 +12,6 @@ public final class App {
 
     /**
      * Méthode principale de l'application. Lance l'interface utilisateur du Pacman.
-     * 
      * @param args Les arguments de la ligne de commande.
      */
     public static void main(final String[] args) {
