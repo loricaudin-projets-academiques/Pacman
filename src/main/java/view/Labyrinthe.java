@@ -126,6 +126,10 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     // private ArrayList<Integer[]> positionsFoods = matrice.getFreeBoxes();
 
+    /**
+     * Récupération du JPanel.
+     * @return JPanel
+     */
     public JPanel getMyPanel() {
         return this.myPanel;
     }
@@ -184,18 +188,36 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 JOptionPane.INFORMATION_MESSAGE);
     }
 
+    /**
+     * Dessiner un carré dans l'écran.
+     * @param g
+     * @param x
+     * @param y
+     */
     private void drawSquare(final Graphics g, final int x, final int y) {
         int padding = 5;
         g.setColor(Color.blue);
         g.fillRect(x + padding, y + padding, tailleCarre, tailleCarre);
     }
 
+    /**
+     * Dessiner un cercle dans l'écran.
+     * @param g
+     * @param x
+     * @param y
+     */
     private void drawCircle(final Graphics g, final int x, final int y) {
         int padding = tailleCarre / 2;
         g.setColor(Color.YELLOW);
         g.fillOval(x + padding, y + padding, sizeCircle, sizeCircle);
     }
 
+    /**
+     * Dessiner un personnage.
+     * @param g
+     * @param character
+     * @param characterView
+     */
     private void drawCharacter(
             final Graphics g,
             final Character character,
