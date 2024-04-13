@@ -109,7 +109,6 @@ public class EndWindow extends JFrame implements ActionListener {
         labelScore.setBorder(BorderFactory.createCompoundBorder(
                 new LineBorder(Color.YELLOW, 1),
                 new EmptyBorder(10, 30, 10, 30)));
-        System.out.println(labelScore.getText());
 
         if (won) {
             labelTitre.setText("Gagne !");
@@ -170,7 +169,6 @@ public class EndWindow extends JFrame implements ActionListener {
         labelTime.setBorder(BorderFactory.createCompoundBorder(
                 new LineBorder(Color.YELLOW, 1),
                 new EmptyBorder(10, 30, 10, 30)));
-        System.out.println(labelTime.getText());
 
         c.gridx = 0;
         c.gridy = 2;
