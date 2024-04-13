@@ -190,4 +190,21 @@ public class EndWindow extends JFrame implements ActionListener {
             System.exit(0);
         }
     }
+
+    public boolean isWon() {
+        return won;
+    }
+
+    public JLabel getLabelTitre() {
+        return labelTitre;
+    }
+
+    public JLabel getLabelScore() {
+        return labelScore;
+    }
+
+    public JLabel getLabelTime() {
+        return labelTime;
+    }
+
 }

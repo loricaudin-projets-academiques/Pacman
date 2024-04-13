@@ -41,4 +41,8 @@ public abstract class Observable {
             obs.update();
         }
     }
+
+    public List<Observer> getObserverList() {
+        return observerList;
+    }
 }

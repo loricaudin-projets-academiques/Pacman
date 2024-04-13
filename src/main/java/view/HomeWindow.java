@@ -132,4 +132,20 @@ public class HomeWindow extends JFrame implements ActionListener, Observer {
         throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
+    public JPanel getPanel() {
+        return panel;
+    }
+    
+    public JButton getButtonStart() {
+        return buttonStart;
+    }
+
+    public JButton getButtonExit() {
+        return buttonExit;
+    }
+
+    public JLabel getLabelTitre() {
+        return labelTitre;
+    }
+
 }
