@@ -122,4 +122,23 @@ public class HomeWindow extends JFrame implements ActionListener {
         }
 
     }
+
+    
+
+    public JPanel getPanel() {
+        return panel;
+    }
+    
+    public JButton getButtonStart() {
+        return buttonStart;
+    }
+
+    public JButton getButtonExit() {
+        return buttonExit;
+    }
+
+    public JLabel getLabelTitre() {
+        return labelTitre;
+    }
+
 }

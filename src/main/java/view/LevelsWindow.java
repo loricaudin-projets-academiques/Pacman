@@ -183,7 +183,7 @@ public class LevelsWindow extends JDialog implements ActionListener {
                     break;
                 }
             }
-            
+
             modalWindow.dispose();
             StartController controller = new StartController(
                 level,
@@ -211,4 +211,9 @@ public class LevelsWindow extends JDialog implements ActionListener {
             return 0;
         }
     }
+
+    public JComboBox<String> getComboxBoxLevels() {
+        return comboxBoxLevels;
+    }
+
 }
