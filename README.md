@@ -20,3 +20,5 @@ Essayez de récolter tous les pac-gommes du labyrinthe, sans vous faire toucher 
 ## Designs Patterns utilisé
 - MVC (séparation des Modèles, des Vues et des Contrôleurs)
 - Observer et Observable
+
+Note : La pipeline ne fonctionne pas car en voulant créer des tests sur les vues, une erreur apparaît dans la console de la pipeline, qui est la même erreur que sur les machines virtuelles linux, c'est-à-dire qu'il ne trouve pas X11 Display (ce qu'il n'y a pas sous Windows en faisant mvn test)
