@@ -25,9 +25,7 @@ import model.InitialisationMatrice;
 import model.MusicPlayer;
 
 /**
- * Crée la fenetre principal.
- * 
- * @return Le fenetre principal. créé, avec le labyrinthe chargé.
+ * Crée la fenêtre principale avec le labyrinthe chargé.
  */
 public class Labyrinthe extends JFrame implements KeyListener, Observer {
 

@@ -26,6 +26,7 @@ public class Character extends JLabel {
     /**
      * Constructeur pour la classe Pacman.
      * @param freeBoxes
+     * @param filename
      */
     public Character(final ArrayList<Integer[]> freeBoxes, final String filename) {
         super("");

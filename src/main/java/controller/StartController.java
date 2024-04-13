@@ -8,13 +8,14 @@ import view.Observer;
 import java.util.ArrayList;
 
 /**
- * 
+ * Contrôleur pour le démarrage d'une partie
  */
 public class StartController {
 
     private int level;
     
     /**
+     * Constructeur de StartController
      * @param level
      */
     public StartController(final int level) {
@@ -22,7 +23,7 @@ public class StartController {
     }
 
     /**
-     * 
+     * Méthode pour démarrer le Labyrinthe
      */
     public void control() {
         final String path = "src/main/resources/maps/level" + this.level + ".txt";
