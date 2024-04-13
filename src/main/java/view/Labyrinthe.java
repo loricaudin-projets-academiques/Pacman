@@ -1,13 +1,15 @@
 package view;
 
+import controller.MonsterController;
 import controller.MusicController;
 import controller.PacmanController;
-import controller.ScoreController;
+
 import model.Pacman;
+import model.Score;
 
 import java.awt.Graphics;
 import java.awt.Color;
-
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -25,44 +28,57 @@ import model.MusicPlayer;
 import model.Monster;
 import model.Character;
 /**
- * Crée la fenetre principal.
- *
- * @return Le fenetre principal. créé, avec le labyrinthe chargé.
+ * Crée la fenêtre principale avec le labyrinthe chargé.
  */
 public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     private InitialisationMatrice matrice;
-    private PacmanController controller;
+    private PacmanController pacmanController;
     private Pacman pacman;
+    private CharacterView pacmanView;
+
+    private ArrayList<MonsterController> listMonstersControllers;
     private ArrayList<Monster> listMonsters;
+    private ArrayList<CharacterView> monstersViews;
 
     private Timer timer;
     private ArrayList<Integer[]> positionsFoods = new ArrayList<>();
     private ArrayList<Integer[]> positionsFreeBoxes;
-    private ScoreController scoreController;
 
     private MusicPlayer musicPlayer = new MusicPlayer();
     private MusicController musicController;
+
+    private Score score;
 
     /**
      * Constructeur de la classe Labyrinthe.
      */
     public Labyrinthe(
             final InitialisationMatrice matrice,
-            final PacmanController controller,
+            final PacmanController pacmanController,
             final Pacman pacman,
-            final ArrayList<Monster> listMonsters
+            final ArrayList<Monster> listMonsters,
+            final ArrayList<MonsterController> listMonstersControllers
             ) {
         this.matrice = matrice;
+        //matrice.addObserver(this);
 
         this.pacman = pacman;
+        this.pacmanView = new CharacterView(pacman);
+        pacman.addObserver(this);
+        this.pacmanController = pacmanController;
+
         this.listMonsters = listMonsters;
-        this.controller = controller;
+        this.monstersViews = new ArrayList<>();
+        this.listMonstersControllers = listMonstersControllers;
+
+        for (Monster monster: listMonsters) {
+            this.monstersViews.add(new CharacterView(monster));
+        }
 
         this.timer = new Timer(100, e -> moveCharacters());
         this.timer.start();
 
-        this.setContentPane(this.createPanel());
         this.setTitle("Pac Man");
         this.setIconImage(new ImageIcon("src/main/resources/pacman/pacman.png").getImage());
         this.setSize(
@@ -84,13 +100,18 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         this.musicPlayer.addObserver(this);
         this.musicController = new MusicController(musicPlayer);
 
-        this.scoreController = new ScoreController();
+        this.score = new Score(positionsFreeBoxes.size());
+        this.jlabelScore = new JLabel();
+        this.setContentPane(this.createPanel());
+        jlabelScore.setForeground(
+                new Color(255, 255, 0));
     }
 
     private JPanel myPanel;
+    private JLabel jlabelScore;
     private int tailleCarre = 50;
     private int sizeCircle = 10;
-    private ChronoTest chrono = new ChronoTest();
+    private Chrono chrono = new Chrono();
 
     // private ArrayList<Integer[]> positionsFoods = matrice.getFreeBoxes();
 
@@ -100,7 +121,6 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     /**
      * Création d'un JPanel.
-     *
      * @return JPanel
      */
     private JPanel createPanel() {
@@ -121,12 +141,10 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                     }
                 }
 
-                drawPacman(g, pacman.getCharacterX(), pacman.getCharacterY());
+                drawCharacter(g, pacman, pacmanView);
 
-                drawCharacter(g, pacman);
-
-                for (Monster monster : listMonsters) {
-                    drawCharacter(g, monster);
+                for (int ii = 0; ii < listMonsters.size(); ii++) {
+                    drawCharacter(g, listMonsters.get(ii), monstersViews.get(ii));
                 }
 
             }
@@ -134,8 +152,14 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         chrono.start();
         myPanel.setBackground(Color.black);
         myPanel.setLayout(null);
+        chrono.setForeground(Color.yellow);
+        chrono.setFont(new Font("Serif", Font.BOLD, 16));
         chrono.setBounds(10, tailleCarre * matrice.getMatrice().size() - 20, 50, 100);
         myPanel.add(chrono);
+        jlabelScore.setText("Points : " + score.getCount() + "/" + score.getScoreTotal());
+        jlabelScore.setBounds(tailleCarre * matrice.getMatrice().get(0).size() - 100,
+                tailleCarre * matrice.getMatrice().size() - 20, 100, 100);
+        myPanel.add(jlabelScore);
         this.addKeyListener(this);
         return myPanel;
     }
@@ -161,28 +185,20 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         g.fillOval(x + padding, y + padding, sizeCircle, sizeCircle);
     }
 
-    private void drawPacman(final Graphics g, final int x, final int y) {
+    private void drawCharacter(
+            final Graphics g,
+            final Character character,
+            final CharacterView characterView
+        ) {
         int padding = 5;
         g.drawImage(
-                pacman.getImageIcon().getImage(),
-                x + padding,
-                y + padding,
-                tailleCarre,
-                tailleCarre,
-                null);
-    }
-
-    private void drawCharacter(final Graphics g, Character character) {
-        int padding = 5;
-        g.drawImage(
-            character.getImageIcon().getImage(),
+            characterView.getImageIcon().getImage(),
             character.getCharacterX() + padding,
             character.getCharacterY() + padding,
             tailleCarre,
             tailleCarre,
             null
         );
-
     }
 
     /**
@@ -209,7 +225,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
                 pressedDirection = Pacman.Direction.RIGHT;
                 break;
             case KeyEvent.VK_ESCAPE:
-                controller.handlePause();
+                pacmanController.handlePause();
                 break;
             default:
                 return;
@@ -218,7 +234,7 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
         if (pacman.getDirection() == pressedDirection) {
             return;
         } else {
-            controller.handleDirection(pressedDirection);
+            pacmanController.handleDirection(pressedDirection);
         }
 
         myPanel.repaint();
@@ -236,37 +252,36 @@ public class Labyrinthe extends JFrame implements KeyListener, Observer {
 
     @Override
     public void update() {
-        // TODO Auto-generated method stub
-
+        myPanel.repaint();
     }
 
     private void moveCharacters() {
-        controller.handleMovement(pacman.getDirection());
+        pacmanController.handleMovement(pacman.getDirection());
         int pacmanX = pacman.getCharacterX();
         int pacmanY = pacman.getCharacterY();
         boolean notFound = true;
         for (int i = 0; i < positionsFoods.size(); i++) {
             if (positionsFoods.get(i)[0] == pacmanX
                     && positionsFoods.get(i)[1] == pacmanY
-                    && notFound
-                ) {
+                    && notFound) {
                 positionsFoods.get(i)[0] = 0;
                 positionsFoods.get(i)[1] = 0;
                 notFound = false;
-                this.scoreController.setCount(1);
-                if (scoreController.control(positionsFreeBoxes.size())) {
+                this.score.setCount(1);
+                if (score.control()) {
                     this.dispose();
-                    EndWindow endWindow = new EndWindow(true);
+                    chrono.stop();
+                    EndWindow endWindow = new EndWindow(true, score, chrono.getTime());
                     endWindow.setVisible(true);
                 }
+                jlabelScore.setText("Points : " + score.getCount() + "/" + score.getScoreTotal());
+                myPanel.add(jlabelScore);
             }
         }
 
-        for (Monster monster : listMonsters) {
-            monster.move();
+        for (MonsterController monsterController : listMonstersControllers) {
+            monsterController.updatePosition();
         }
-
-        myPanel.repaint();
     }
 
 

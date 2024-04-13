@@ -1,16 +1,13 @@
 package model;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import java.net.URL;
 import java.util.ArrayList;
 
 /**
- * 
+ * Classe représentant les différents personnages du jeu.
  */
-public class Character extends JLabel {
+public class Character extends Observable {
     /**
-     * 
+     * Énumération des directions possibles du personnage.
      */
     public enum Direction {
         UP, DOWN, LEFT, RIGHT
@@ -26,11 +23,11 @@ public class Character extends JLabel {
     /**
      * Constructeur pour la classe Pacman.
      * @param freeBoxes
+     * @param filename
      */
     public Character(final ArrayList<Integer[]> freeBoxes, final String filename) {
-        super("");
+        super();
         this.filename = filename;
-
         this.freeBoxes = freeBoxes;
 
         // Position de départ
@@ -43,39 +40,32 @@ public class Character extends JLabel {
         int indexStartDirection = (int) (Math.random() * ((possibleDirections.size())));
         this.direction = possibleDirections.get(indexStartDirection);
 
-        updatePosition();
+        this.notifyObservers();
     }
-
-    /**
-     * 
-     * @return ImageIcon
-     */
-    public ImageIcon getImageIcon() {
-        URL imageURL = getClass().getResource(this.filename);
-        ImageIcon imageCharacter = new ImageIcon(imageURL);
-        return imageCharacter;
-    }
-
     
     /**
+     * Récupérer la coordonnée x.
      * @return characterX
      */
     public int getCharacterX() {
         return characterX;
     }
     /**
+     * Récupérer la coordonnée y.
      * @return characterY
      */
     public int getCharacterY() {
         return characterY;
     }
     /**
+     * Changer la coordonnée x.
      * @param characterX
      */
     public void setCharacterX(final int characterX) {
         this.characterX = characterX;
     }
     /**
+     * Changer la coordonnée y.
      * @param characterY
      */
     public void setCharacterY(final int characterY) {
@@ -83,6 +73,7 @@ public class Character extends JLabel {
     }
 
     /**
+     * Récupérer la direction.
      * @return Direction
      */
     public Direction getDirection() {
@@ -90,6 +81,7 @@ public class Character extends JLabel {
     }
 
     /**
+     * Récupérer le lien vers l'image du personnage.
      * @return String
      */
     public String getFilename() {
@@ -97,50 +89,11 @@ public class Character extends JLabel {
     }
 
     /**
+     * Changer le lien vers l'image du personnage.
      * @param filename
      */
     public void setFilename(final String filename) {
         this.filename = filename;
-    }
-
-    /**
-     * 
-     */
-    private void updatePosition() {
-        this.setBounds(characterX + 5, characterY + 5, 50, 50);
-    }
-
-
-    /**
-     * Méthode pour le mouvement de pacman en fonction
-     * de la direction.
-     */
-    public void move() {
-        ArrayList<Direction> possibleDirections = checkPossibleDirections();
-
-        if (!possibleDirections.contains(this.direction)) {
-            int indexStartDirection = (int) (Math.random() * ((possibleDirections.size())));
-            this.setDirection(possibleDirections.get(indexStartDirection));
-        }
-
-        int afstand = 50;
-        switch (direction) {
-            case UP:
-                characterY -= afstand;
-                break;
-            case DOWN:
-                characterY += afstand;
-                break;
-            case LEFT:
-                characterX -= afstand;
-                break;
-            case RIGHT:
-                characterX += afstand;
-                break;
-            default:
-                break;
-        }
-        updatePosition();
     }
 
     /**
@@ -152,7 +105,8 @@ public class Character extends JLabel {
     }
 
     /**
-     * 
+     * Vérifier les directions possibles selon la position du personnage dans le labyrinthe.
+     * @return liste des directions possibles
      */
     public ArrayList<Direction> checkPossibleDirections() {
         ArrayList<Direction> listDirections = new ArrayList<Direction>();

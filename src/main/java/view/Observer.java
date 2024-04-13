@@ -6,7 +6,7 @@ package view;
 public interface Observer {
 
     /**
-     * Methode pour update les observers.
+     * Méthode pour update les observers.
      */
     void update();
 }

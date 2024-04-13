@@ -8,9 +8,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 
 /**
- * 
+ * Vue du chronomètre.
  */
-public class ChronoTest extends JLabel {
+public class Chrono extends JLabel {
     private Timer timer;
     private JLabel label;
     private int sec;
@@ -18,7 +18,7 @@ public class ChronoTest extends JLabel {
     /**
      * update toutes les secondes avec la nouvelle valeur du chrono.
      */
-    public ChronoTest() {
+    public Chrono() {
         super("00:00");
         super.setForeground(Color.white);
         this.label = this;
@@ -41,9 +41,17 @@ public class ChronoTest extends JLabel {
     }
 
     /**
-     * arret du chrono.
+     * arrêt du chrono.
      */
     public void stop() {
         timer.stop();
+    }
+
+    /**
+     * getter du temps.
+     * @return
+     */
+    public String getTime() {
+        return this.getText();
     }
 }

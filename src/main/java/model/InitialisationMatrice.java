@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * class de contruction de la matrice de jeu.
+ * Classe de construction de la matrice de jeu.
  */
 public class InitialisationMatrice extends Observable {
 
@@ -16,6 +16,7 @@ public class InitialisationMatrice extends Observable {
     private ArrayList<Integer[]> freeBoxes;
 
     /**
+     * Constructeur de la matrice.
      * @param path
      */
     public InitialisationMatrice(final String path) {
@@ -26,7 +27,7 @@ public class InitialisationMatrice extends Observable {
     }
 
     /**
-     * methodes pour lire des données dans un fichier et construire la matrice du jeu.
+     * Méthodes pour lire des données dans un fichier et construire la matrice du jeu.
      */
     public void lecture() {
         try {
@@ -63,7 +64,7 @@ public class InitialisationMatrice extends Observable {
     }
 
     /**
-     * methode pour retourner le nombre de ligne du fichier.
+     * Méthode pour retourner le nombre de ligne du fichier.
      * @param path
      * @return
      */
@@ -89,10 +90,18 @@ public class InitialisationMatrice extends Observable {
         return count;
     }
 
+    /**
+     * Getter de la matrice.
+     * @return
+     */
     public ArrayList<ArrayList<Integer>> getMatrice() {
         return matrice;
     }
 
+    /**
+     * Générer les positions des carrés et des zones vides
+     * dans le labyrinthe à partir de la matrice.
+     */
     private void generatePositionsSquares() {
         int squareSize = 50;
         for (int ii = 0; ii < matrice.size(); ii++) {
@@ -110,10 +119,18 @@ public class InitialisationMatrice extends Observable {
         }
     }
 
+    /**
+     * Getter des zones où peuvent circuler les personnages.
+     * @return
+     */
     public ArrayList<Integer[]> getFreeBoxes() {
         return this.freeBoxes;
     }
 
+    /**
+     * Getter des carrés où ne peuvent pas circuler les personnages.
+     * @return
+     */
     public ArrayList<Integer[]> getPositionsSquares() {
         return this.positionsSquares;
     }

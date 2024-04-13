@@ -50,10 +50,11 @@ public class PacmanController {
                     break;
             }
         }
+        model.notifyObservers();
     }
 
     /**
-     * 
+     * Méthode pour handle la direction du jeu.
      * @param direction
      */
     public void handleDirection(final Pacman.Direction direction) {

@@ -4,12 +4,11 @@ import model.InitialisationMatrice;
 import model.Monster;
 import model.Pacman;
 import view.Labyrinthe;
-import view.Observer;
 
 import java.util.ArrayList;
 
 /**
- * 
+ * Contrôleur pour le démarrage d'une partie.
  */
 public class StartController {
 
@@ -17,6 +16,7 @@ public class StartController {
     private int nbMonsters;
     
     /**
+     * Constructeur de StartController.
      * @param level
      * @param nbMonsters
      */
@@ -26,7 +26,7 @@ public class StartController {
     }
 
     /**
-     * 
+     * Méthode pour démarrer le Labyrinthe.
      */
     public void control() {
         final String path = "src/main/resources/maps/level" + this.level + ".txt";
@@ -36,14 +36,23 @@ public class StartController {
         ArrayList<Integer[]> freeBoxes = matrice.getFreeBoxes();
         Pacman pacman = new Pacman(freeBoxes);
         PacmanController pacmanController = new PacmanController(pacman);
+        ArrayList<MonsterController> listMonstersControllers = new ArrayList<>();
 
         ArrayList<Monster> listMonsters = new ArrayList<>();
         for (int ii = 0; ii < nbMonsters; ii++) {
-            listMonsters.add(new Monster(freeBoxes));
+            Monster monster = new Monster(freeBoxes);
+            listMonsters.add(monster);
+            listMonstersControllers.add(new MonsterController(monster));
         }
 
-        Labyrinthe labyrinthe = new Labyrinthe(matrice, pacmanController, pacman, listMonsters);
-        matrice.addObserver((Observer) labyrinthe);
+        Labyrinthe labyrinthe = new Labyrinthe(
+            matrice,
+            pacmanController,
+            pacman,
+            listMonsters,
+            listMonstersControllers
+        );
+        //matrice.addObserver((Observer) labyrinthe);
         labyrinthe.setVisible(true);
     }
 }

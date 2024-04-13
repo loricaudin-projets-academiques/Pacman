@@ -23,17 +23,16 @@ import javax.swing.border.LineBorder;
 import java.awt.Font;
 
 import controller.StartController;
-import model.RoundButton;
 
 /**
- * 
+ * Fenêtre de choix du niveau.
  */
 public class LevelsWindow extends JDialog implements ActionListener {
 
     private JFrame modalWindow;
 
     /**
-     * 
+     * Constructeur de LevelsWindow.
      */
     public LevelsWindow(final JFrame modalWindow) {
         super(modalWindow, "Pacman - Choix du niveau");
@@ -75,6 +74,7 @@ public class LevelsWindow extends JDialog implements ActionListener {
     private JLabel labelSelectMonsters;
 
     /**
+     * Création d'un JPanel.
      * @return JPanel
      */
     private JPanel createPanel() {
@@ -193,7 +193,7 @@ public class LevelsWindow extends JDialog implements ActionListener {
     }
 
     /**
-     * 
+     * Compter le nombre de maps.
      * @return Integer, nombreDeFichier
      */
     public Integer countFile() {
