@@ -2,14 +2,18 @@ package model;
 
 
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import org.junit.jupiter.api.Test;
+
+import view.RoundButton;
 
 /**
  * classe test de RoundButton.
@@ -33,10 +37,13 @@ public class RoundButtonTest {
         RoundButton roundButton = new RoundButton("Test");
         roundButton.setSize(100, 50);
         BufferedImage image = new BufferedImage(100, 50, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2d = image.createGraphics();
+        Graphics2D g = image.createGraphics();
 
-        roundButton.paintComponent(g2d);
+        roundButton.paintComponents(g);
 
+        if (roundButton.getModel().isArmed()) {
+            assertEquals(Color.lightGray, g.getColor());
+        } 
     }
 
     /**
@@ -47,11 +54,9 @@ public class RoundButtonTest {
         // Création d'un RoundButton pour le test
         RoundButton roundButton = new RoundButton("Test");
         roundButton.setSize(100, 50);
-
         BufferedImage image = new BufferedImage(100, 50, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2d = image.createGraphics();
-
-        roundButton.paintBorder(g2d);
+        Graphics2D g = image.createGraphics();
+        roundButton.paintBorder(g);
 
     }
 

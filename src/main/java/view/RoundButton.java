@@ -32,7 +32,7 @@ public class RoundButton extends JButton {
     }
 
     @Override
-    protected void paintBorder(final Graphics g) {
+    public void paintBorder(final Graphics g) {
         g.setColor(getForeground());
         g.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 20, 20);
     }

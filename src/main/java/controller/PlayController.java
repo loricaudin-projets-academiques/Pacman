@@ -56,7 +56,7 @@ public class PlayController {
     /**
      * Vérifier si un monstre a touché Pacman et donc si on a perdu.
      */
-    public void controlLoose() {
+    public boolean controlLoose() {
         boolean loosed = false;
 
         for (int ii = 0; ii < listMonsters.size() && !loosed; ii++) {
@@ -76,5 +76,6 @@ public class PlayController {
             EndWindow endWindow = new EndWindow(false, score, chrono.getTime());
             endWindow.setVisible(true);
         }
+        return loosed;
     }
 }

@@ -123,11 +123,7 @@ public class HomeWindow extends JFrame implements ActionListener {
 
     }
 
-    @Override
-    public void update() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
-    }
+    
 
     public JPanel getPanel() {
         return panel;

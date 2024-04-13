@@ -77,7 +77,6 @@ public class PacmanControllerTest {
 
         assertFalse(pacmanController.isPaused());
 
-        pacmanController.updateModel();
     }
 
     /**

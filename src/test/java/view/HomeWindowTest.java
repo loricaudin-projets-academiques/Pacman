@@ -1,7 +1,6 @@
 package view;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.swing.JButton;
@@ -43,17 +42,5 @@ public class HomeWindowTest {
         assertTrue(panel.isAncestorOf(buttonStart), "Le bouton Jouer devrait être ajouté au panel");
         assertTrue(panel.isAncestorOf(buttonExit), "Bouton Quitter devrait être ajouté au panel");
         assertTrue(panel.isAncestorOf(labelTitre), "Le label Titre devrait être ajouté au panel");
-    }
-    /**
-     * test update.
-     */
-    @Test
-    public void testUpdate() {
-        HomeWindow homeWindow = new HomeWindow();
-
-        // Testez que l'appel à la méthode update lance bien une UnsupportedOperationException
-        assertThrows(UnsupportedOperationException.class, () -> {
-            homeWindow.update();
-        });
     }
 }

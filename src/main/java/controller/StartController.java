@@ -55,4 +55,12 @@ public class StartController {
         //matrice.addObserver((Observer) labyrinthe);
         labyrinthe.setVisible(true);
     }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public int getNbMonsters() {
+        return nbMonsters;
+    }
 }

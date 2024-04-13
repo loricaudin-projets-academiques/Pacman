@@ -5,9 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
 import model.InitialisationMatrice;
+import model.Monster;
 import model.Pacman;
 import view.Labyrinthe;
 import view.Observer;
@@ -20,7 +23,9 @@ public class StartControllerTest {
      */
     @Test
     public void testControl() {
-        StartController startController = new StartController(1);
+        int level = 1;
+        int nbMonsters = 3; 
+        StartController startController = new StartController(level, nbMonsters);
         startController.control();
         assertNotNull(startController);
 
@@ -31,8 +36,14 @@ public class StartControllerTest {
         assertFalse(matrice.getMatrice().isEmpty()); 
         Pacman pacman = new Pacman(matrice.getFreeBoxes());
         assertNotNull(pacman); 
-        assertNotNull(new StartController(1)); 
-        Labyrinthe labyrinthe = new Labyrinthe(matrice, null, pacman);
+        ArrayList<Monster> listMonsters = new ArrayList<>();
+        for (int i = 0; i < nbMonsters; i++) {
+            Monster monster = new Monster(matrice.getFreeBoxes());
+            listMonsters.add(monster);
+        }
+
+        assertNotNull(new StartController(level, nbMonsters)); 
+        Labyrinthe labyrinthe = new Labyrinthe(matrice, null, pacman, listMonsters, null);
         matrice.addObserver((Observer) labyrinthe);
         labyrinthe.setVisible(true);
         assertTrue(labyrinthe.isVisible()); 
@@ -44,7 +55,7 @@ public class StartControllerTest {
     @Test
     public void testInvalidLevel() {
         try {
-            StartController startController = new StartController(-1);
+            StartController startController = new StartController(-1, 2);
             startController.control();
             assertNull(startController);
         } catch (Exception e) {
