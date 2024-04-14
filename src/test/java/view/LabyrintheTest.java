@@ -30,9 +30,13 @@ public class LabyrintheTest {
                 ArrayList<Monster> listMonsters = new ArrayList<>();
                 ArrayList<MonsterController> listMonstersControllers = new ArrayList<>();
                 int tailleCarre = 50;
-                Monster monster = new Monster(matrice.getFreeBoxes());
-                listMonsters.add(monster);
-                listMonstersControllers.add(new MonsterController(monster));
+                String[] gifFilenames = {"monsters/GBlue.gif", "monsters/GYellow.gif", "monsters/GRed.gif", "monsters/GPink.gif", "monsters/GGreen.gif"};
+                for (int i = 0; i < 5; i++) {
+                        Monster monster = new Monster(matrice.getFreeBoxes(), gifFilenames[i % gifFilenames.length]);
+                        listMonsters.add(monster);
+                        listMonstersControllers.add(new MonsterController(monster));
+                }
+
                 Labyrinthe labyrinthe = new Labyrinthe(
                                 matrice,
                                 controller,

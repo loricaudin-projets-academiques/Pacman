@@ -37,8 +37,9 @@ public class StartControllerTest {
         Pacman pacman = new Pacman(matrice.getFreeBoxes());
         assertNotNull(pacman); 
         ArrayList<Monster> listMonsters = new ArrayList<>();
+        String[] gifFilenames = {"/monsters/GBlue.gif", "/monsters/GYellow.gif", "/monsters/GRed.gif", "/monsters/GPink.gif", "/monsters/GGreen.gif"};
         for (int i = 0; i < nbMonsters; i++) {
-            Monster monster = new Monster(matrice.getFreeBoxes());
+            Monster monster = new Monster(matrice.getFreeBoxes(), gifFilenames[i % gifFilenames.length]);
             listMonsters.add(monster);
         }
 

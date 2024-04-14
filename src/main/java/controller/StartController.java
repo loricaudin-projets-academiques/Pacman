@@ -39,11 +39,21 @@ public class StartController {
         ArrayList<MonsterController> listMonstersControllers = new ArrayList<>();
 
         ArrayList<Monster> listMonsters = new ArrayList<>();
+
+        String[] gifFilenames = {
+                "/monsters/GBlue.gif",
+                "/monsters/GYellow.gif",
+                "/monsters/GRed.gif",
+                "/monsters/GPink.gif",
+                "/monsters/GGreen.gif"
+        };
+
         for (int ii = 0; ii < nbMonsters; ii++) {
-            Monster monster = new Monster(freeBoxes);
+            Monster monster = new Monster(freeBoxes, gifFilenames[ii % gifFilenames.length]);
             listMonsters.add(monster);
             listMonstersControllers.add(new MonsterController(monster));
         }
+
 
         Labyrinthe labyrinthe = new Labyrinthe(
             matrice,

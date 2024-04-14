@@ -74,8 +74,8 @@ public class PlayControllerTest {
         assertFalse(playController.controlLoose());
 
 
-        monsters.add(new Monster(freeBoxes));
-        monsters.add(new Monster(freeBoxes));
+        monsters.add(new Monster(freeBoxes,"/monsters/GBlue.gif"));
+        monsters.add(new Monster(freeBoxes,"/monsters/GPink.gif"));
         assertFalse(playController.controlLoose());
     }
 
