@@ -12,8 +12,8 @@ public class Monster extends Character {
      * Constructeur du monstre.
      * @param freeBoxes
      */
-    public Monster(final ArrayList<Integer[]> freeBoxes) {
-        super(freeBoxes, "/monstre.png");
+    public Monster(final ArrayList<Integer[]> freeBoxes, String gifFileName) {
+        super(freeBoxes, gifFileName);
 
         this.setDirection(this.getDirection());
     }

@@ -104,6 +104,7 @@ public class Character extends Observable {
         this.direction = direction;
     }
 
+
     /**
      * Vérifier les directions possibles selon la position du personnage dans le labyrinthe.
      * @return liste des directions possibles
